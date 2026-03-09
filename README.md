@@ -1,4 +1,4 @@
-![logo](assets/2-2.png)
+<img src="assets/2-2.png" width="250">
 
 # AM Project
 AI-driven automated marketing pipeline for generating brand-consistent fashion campaign content.

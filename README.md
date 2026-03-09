@@ -35,10 +35,13 @@ Analytics
 
 
 ## Example Outputs
+<img src="assets/CMP001_IMG_05.png" width="400">
+<img src="assets/CMP001_IMG_22.png" width="400">
+<img src="assets/CMP001_IMG_23.png width="400">
 
 
 ## Database
-
+https://airtable.com/appsrSaXzDiVtH2TZ/tblnUODAapT1iq5l0/viwkNR3KVvEJItiHW?blocks=hide
 
 ## Research Context
 This system was developed as part of a Bachelor thesis exploring

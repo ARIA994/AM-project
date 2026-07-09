@@ -1,0 +1,3047 @@
+{
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -976,
+        -1088
+      ],
+      "id": "2e740921-1fcc-420b-96e0-b8c9432137a7",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "toText",
+        "sourceProperty": "output",
+        "options": {
+          "fileName": "= final report"
+        }
+      },
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        1840,
+        -1920
+      ],
+      "id": "acfa3182-1cc7-4043-9fab-8cc4f21dc480",
+      "name": "Convert to File"
+    },
+    {
+      "parameters": {
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "1-ZpQFRYWOSnryifxgf7sZXHv3fEPJ8Px",
+          "mode": "list",
+          "cachedResultName": "2026",
+          "cachedResultUrl": "https://drive.google.com/drive/folders/1-ZpQFRYWOSnryifxgf7sZXHv3fEPJ8Px"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        2064,
+        -1920
+      ],
+      "id": "b38e4ed5-0ad3-4b3e-8f03-2ab8c826fb67",
+      "name": "Upload file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "sdvLVdBxnlfe1Lco",
+          "name": "Google Drive account 5"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "update",
+        "base": {
+          "__rl": true,
+          "value": "appKT08lPAlsBobbC",
+          "mode": "list",
+          "cachedResultName": "Campaigns (test)",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblnUODAapT1iq5l0",
+          "mode": "list",
+          "cachedResultName": "Campaigns",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC/tblnUODAapT1iq5l0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "campaign report": "=[{ \"url\": \"{{ $json.webContentLink }}\", \"filename\": \"img {{ $now }}\" }]",
+            "Campaign ID": "={{ $('Merge1').item.json['Campaign ID'] }}"
+          },
+          "matchingColumns": [
+            "Campaign ID"
+          ],
+          "schema": [
+            {
+              "id": "id",
+              "displayName": "id",
+              "required": false,
+              "defaultMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Campaign ID",
+              "displayName": "Campaign ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Campaign Name",
+              "displayName": "Campaign Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Planning",
+                  "value": "Planning"
+                },
+                {
+                  "name": "Active",
+                  "value": "Active"
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                },
+                {
+                  "name": "Archived",
+                  "value": "Archived"
+                },
+                {
+                  "name": "Planned",
+                  "value": "Planned"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Start Date",
+              "displayName": "Start Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "End Date",
+              "displayName": "End Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "dateTime",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Duration (weeks)",
+              "displayName": "Duration (weeks)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "complete",
+              "displayName": "complete",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "structure",
+              "displayName": "structure",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Posting Frequency",
+              "displayName": "Posting Frequency",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Core Principle",
+              "displayName": "Core Principle",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Space > Object > Human",
+                  "value": "Space > Object > Human"
+                },
+                {
+                  "name": "Object > Space > Human",
+                  "value": "Object > Space > Human"
+                },
+                {
+                  "name": "Brand Awareness",
+                  "value": "Brand Awareness"
+                },
+                {
+                  "name": "Sales Growth",
+                  "value": "Sales Growth"
+                },
+                {
+                  "name": "Community Engagement",
+                  "value": "Community Engagement"
+                },
+                {
+                  "name": "Customer Loyalty",
+                  "value": "Customer Loyalty"
+                },
+                {
+                  "name": "Sustainability",
+                  "value": "Sustainability"
+                },
+                {
+                  "name": "Innovation",
+                  "value": "Innovation"
+                },
+                {
+                  "name": "Health & Wellness",
+                  "value": "Health & Wellness"
+                }
+              ],
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Success Definition",
+              "displayName": "Success Definition",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Notes (Internal)",
+              "displayName": "Notes (Internal)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Campaign Cover",
+              "displayName": "Campaign Cover",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Campaign Locks",
+              "displayName": "Campaign Locks",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Shot Vocabulary 2",
+              "displayName": "Shot Vocabulary 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Shoots",
+              "displayName": "Shoots",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Posts",
+              "displayName": "Posts",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Weekly Schedule",
+              "displayName": "Weekly Schedule",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Weekly Metrics",
+              "displayName": "Weekly Metrics",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Surfaces",
+              "displayName": "Surfaces",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Campaign rules",
+              "displayName": "Campaign rules",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "location assets",
+              "displayName": "location assets",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "campaign characters",
+              "displayName": "campaign characters",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "products",
+              "displayName": "products",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "campaign report",
+              "displayName": "campaign report",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        2240,
+        -1920
+      ],
+      "id": "01f00b70-b8a6-49a6-a2ef-3ed712497868",
+      "name": "Update record",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appKT08lPAlsBobbC",
+          "mode": "list",
+          "cachedResultName": "Campaigns (test)",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblnUODAapT1iq5l0",
+          "mode": "list",
+          "cachedResultName": "Campaigns",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC/tblnUODAapT1iq5l0"
+        },
+        "returnAll": false,
+        "limit": 3,
+        "options": {},
+        "sort": {
+          "property": [
+            {
+              "field": "Campaign ID",
+              "direction": "desc"
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -608,
+        -736
+      ],
+      "id": "2bd1253c-4261-4106-bd8d-e9ffcab9703b",
+      "name": "previous reports",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "content": "# Campaign director :  \n## Planner",
+        "height": 704,
+        "width": 3184,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -688,
+        -992
+      ],
+      "typeVersion": 1,
+      "id": "aa902227-c374-4e15-9544-a1a886e4824d",
+      "name": "Sticky Note1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me1",
+      "typeVersion": 1,
+      "position": [
+        -256,
+        -944
+      ],
+      "id": "a2cc8b7b-06c0-4a31-96c4-f78e091f4d8c"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {
+          "includeBinaries": true
+        }
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        224,
+        -752
+      ],
+      "id": "0ee0f431-4175-4a9b-bac4-ecf1e5cbe7cf",
+      "name": "Aggregate1"
+    },
+    {
+      "parameters": {
+        "operation": "text",
+        "destinationKey": "=report",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.extractFromFile",
+      "typeVersion": 1.1,
+      "position": [
+        -64,
+        -592
+      ],
+      "id": "3efd65d7-3f61-4de1-8431-d204c96e404b",
+      "name": "Extract from File"
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        -432,
+        -736
+      ],
+      "id": "ae078134-c6d1-48eb-a693-147246b185d7",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "url": "={{ $json['campaign report'][0].url }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        -272,
+        -592
+      ],
+      "id": "82d08993-0a52-4454-afb9-6b6724e04804",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me3",
+      "typeVersion": 1,
+      "position": [
+        -192,
+        -752
+      ],
+      "id": "30907658-555f-492d-8f87-da1df4d8d0f8"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "e1d31800-4d36-4913-bb14-747eb77f9d5c",
+              "name": "CMP",
+              "value": "={{ $json.report }}",
+              "type": "string"
+            },
+            {
+              "id": "49bb33bf-7685-4427-ad15-9bb6529e114b",
+              "name": "End Date",
+              "value": "={{ $('previous reports').item.json['End Date'] }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        576,
+        -592
+      ],
+      "id": "ef2eabfd-9b8e-4dcd-b695-05b5519aedca",
+      "name": "Edit Fields"
+    },
+    {
+      "parameters": {
+        "messages": {
+          "message": [
+            {
+              "content": "=What are the key cultural, business, and fashion calendar events in the UK for \n{{ $today }} + 2months \nInclude:\n- Major holidays or cultural moments\n- Fashion week schedules (London Fashion Week)\n- Professional work cycle patterns (back-to-office, holiday periods)\n- Economic/retail trends for this period\n- Any major events affecting professional wardrobe behavior\n\nKeep response concise (2-3 sentences maximum).\n"
+            }
+          ]
+        },
+        "options": {},
+        "requestOptions": {}
+      },
+      "type": "n8n-nodes-base.perplexity",
+      "typeVersion": 1,
+      "position": [
+        128,
+        -944
+      ],
+      "id": "d36c37d7-0878-41e5-b07e-6eaec436e95c",
+      "name": "Message a model",
+      "credentials": {
+        "perplexityApi": {
+          "id": "L1UiSsnuFl3M7HhK",
+          "name": "Perplexity account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        1936,
+        -928
+      ],
+      "id": "cde1ef14-a6fd-4a95-9855-795861719ce2",
+      "name": "Merge"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "592f4c12-f882-4ff7-bf41-bb12f68f23ab",
+              "name": "choices[0].message.content",
+              "value": "={{ $json.choices[0].message.content }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        336,
+        -944
+      ],
+      "id": "669be7e8-186f-4d1c-a21a-21550dcda1bf",
+      "name": "Edit Fields1"
+    },
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.noOp",
+      "name": "Replace Me4",
+      "typeVersion": 1,
+      "position": [
+        2032,
+        -496
+      ],
+      "id": "8b4b6c71-6d9a-42c6-b6c9-aced6945386d"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-sonnet-4-5-20250929",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {
+          "maxTokensToSample": 20000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        -256,
+        64
+      ],
+      "id": "a341e41e-713b-42d7-a411-a3a119dfa3ed",
+      "name": "Anthropic Chat Model2",
+      "credentials": {
+        "anthropicApi": {
+          "id": "KXLrzyQuN2b4nR9P",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appL2L8T0ebSlJqHe",
+          "mode": "list",
+          "cachedResultName": "references",
+          "cachedResultUrl": "https://airtable.com/appL2L8T0ebSlJqHe"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl3V1sZM2V9XqLtF",
+          "mode": "list",
+          "cachedResultName": "characters",
+          "cachedResultUrl": "https://airtable.com/appL2L8T0ebSlJqHe/tbl3V1sZM2V9XqLtF"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        -96,
+        64
+      ],
+      "id": "12351f90-4a0b-4417-8be7-928d414132a0",
+      "name": "characters",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appL2L8T0ebSlJqHe",
+          "mode": "list",
+          "cachedResultName": "references",
+          "cachedResultUrl": "https://airtable.com/appL2L8T0ebSlJqHe"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl3V1sZM2V9XqLtF",
+          "mode": "list",
+          "cachedResultName": "characters",
+          "cachedResultUrl": "https://airtable.com/appL2L8T0ebSlJqHe/tbl3V1sZM2V9XqLtF"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtableTool",
+      "typeVersion": 2.1,
+      "position": [
+        -96,
+        192
+      ],
+      "id": "c16e6394-1106-402c-a4c7-1dea4c36e72e",
+      "name": "locations",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c58bfd54-1f0e-4062-a399-1ded7018005f",
+              "name": "output",
+              "value": "={{ $json.content[0].text }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1632,
+        -592
+      ],
+      "id": "f031f8d6-d4da-44a7-b737-f5f4ef1af6b0",
+      "name": "Edit Fields2"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=***\n\n## **USER PROMPT**\n\n```markdown\n# CAMPAIGN BUILDER PLANNER INPUT\n\n## DIRECTOR BRIEF\n{{ $json.output }}\n\n\n---\n\n## AVAILABLE CHARACTERS (from Airtable)\n\nSelect 1-3 characters from this list ONLY. Reference by `character_id`.\n\n\n\n---\n\n## EXISTING LOCATIONS (from Airtable)\n\nSelect 3-5 locations from this list ONLY. Reference by `location_id`. Do NOT generate new locations.\n\n\n\n---\n\n## TASK\n\nExecute Tasks 1-6 to create the campaign's creative foundation:\n\n1. ✅ **Lock Constraints** — Confirm all hard rules from Director Brief\n2. ✅ **Create Campaign Record** — Full campaign metadata\n3. ✅ **Build Shoot Plan** — Define 2-4 production containers\n4. ✅ **Choose Locations (3-5)** — Select from Airtable list ONLY\n5. ✅ **Choose Characters (1-3)** — Select from Airtable list ONLY\n6. ✅ **Define Content Grammar** — Create 5-8 shot templates\n\n**STOP after Task 6.** The Executioner agent will generate the 48-post plan using your output.\n\n---\n\n## CRITICAL REQUIREMENTS\n\n### LOCATIONS:\n- Select 3-5 locations from provided Airtable list ONLY\n- Reference by `location_id` (e.g., recLOC001)\n- Choose locations that best match Director Brief concept: \"## DIRECTOR BRIEF\"\n- Allocate dominance weeks (which locations appear most in which weeks)\n- Calculate usage frequency for each location (express as posts and percentage)\n- **You CANNOT generate new locations.** Use only what's provided in the list.\n- If perfect match doesn't exist, select CLOSEST matches and note in `selection_rationale`\n\n### CHARACTERS:\n- Select 1-3 characters from provided Airtable list ONLY\n- Reference by `character_id` (e.g., recCHAR001)\n- Primary character: 60-70% usage (30-35 posts)\n- Secondary character: 15-25% usage (8-12 posts) — Optional\n- Empty space posts: 10-15% (6-8 posts with NO character)\n\n### SIGNATURE MOMENTS (Pass to Executioner):\nYour output should note signature moment timing from Director Brief:\n- Week X, Post Y: Description + Purpose\nThese will be implemented by Executioner in the 48-post plan.\n\n### MOTION POSTS:\n- Director guidance: [Check Director Brief for motion post limit]\n- Use SHOT-E template for motion only\n- Distribute across 8 weeks strategically\n\n---\n\n## OUTPUT FORMAT\n\n```json\n{\n  \"campaign_planner_output\": {\n    \"task_1_constraints\": {...},\n    \"task_2_campaign_record\": {...},\n    \"task_3_shoot_plan\": {...},\n    \"task_4_locations\": {...},\n    \"task_5_characters\": {...},\n    \"task_6_shot_templates\": {...}\n  }\n}\nGenerate the campaign creative foundation now. Stop after Task 6.",
+        "options": {
+          "systemMessage": "\n### Locations (USE AIRTABLE REFERENCES ONLY)\n\nYou will receive a list of existing locations from Airtable. You MUST select 3-5 locations from this list.\n\n**Location Selection Rules:**\n- Choose 3-5 locations total from provided Airtable list\n- Reference locations by their `location_id` from Airtable\n- Select locations that match campaign concept and emotional tone\n- Mix environment types (brutalist + classical-fusion + minimal)\n- Consider compositional variety (some wide-friendly, some detail-friendly)\n\n**You CANNOT generate new locations.** Only use locations provided in the input.\n\n**Location Output Format (Simplified):**\n```json\n{\n  \"location_id\": \"recYYYYYYYYYYYYYY\",\n  \"location_name\": \"Brutalist Concrete Stairwell\",\n  \"dominance_weeks\":,[1][2][3]\n  \"usage_frequency\": \"high (17 posts)\",\n  \"usage_percentage\": \"35%\",\n  \"selection_rationale\": \"Primary location. Strongest match for 'skeletal architecture' concept with exposed structural geometry.\"\n}\nSelection Strategy:\n\nPrimary location (35-40% of posts): Matches campaign concept most closely\n\nSecondary location (25-30% of posts): Provides environmental contrast\n\nTertiary location (20-25% of posts): Adds compositional variety\n\nAccent locations (10-15% of posts): Special moments, signature scenes\n\nWhat if no location matches campaign concept perfectly?\n\nSelect the CLOSEST matches from available locations\n\nNote the mismatch in selection_rationale\n\nIn location_strategy.missing_elements, describe what location was needed but doesn't exist\n\nExample: \"Campaign requires unfinished skeletal construction site with exposed steel reinforcement. Existing brutalist stairwell is closest match but lacks raw unfinished quality.\"\n\ntext\n\n***\n\n### **CHARACTERS (SIMPLIFIED)**\n\n```markdown\n### Characters (MUST USE PROVIDED LIST)\n\nYou will receive a list of available characters from Airtable. You MUST select characters ONLY from this list.\n\n**Character Selection Rules:**\n- Choose 1-3 characters from the provided list\n- Reference characters by their `character_id` from Airtable\n- Primary character should appear 60-70% of posts (30-35 posts)\n- Secondary characters 15-25% each (8-12 posts)\n- 10-15% posts can have NO character (empty space shots)\n\n**Character Output Format (Simplified):**\n```json\n{\n  \"character_id\": \"recXXXXXXXXXXXXXX\",\n  \"character_name\": \"The Architect\",\n  \"usage_role\": \"primary\",\n  \"frequency_posts\": \"33 posts\",\n  \"frequency_percentage\": \"69%\",\n  \"dominance_weeks\":[2][3][4][5][1]\n}\nNever create new characters. Only use the provided list.\n\ntext\n\n***\n\n### **VOICE & TONE (UPDATED - REMOVED A.M.O. INSTRUCTION)**\n\n```markdown\n### Voice & Tone\n\n**Voice Characteristics:**\n- Calm confident: Declarative sentences\n- Serious: No jokes, no casual language\n- Precise: Architectural language, structural metaphors\n\n**Never Include:**\n- Emojis, questions to audience\n- Commercial slogans (\"Shop Now!\", \"Limited Time!\")\n- Exclamation marks (use sparingly)\n- Hype language\n\n---\nTASK 4 UPDATE (Simplified Location Output)\ntext\n### TASK 4: Choose Locations (3-5)\n\nSelect 3-5 locations from the provided Airtable list that best match the campaign concept.\n\n**Selection Process:**\n1. Review Director Brief concept and emotional tone\n2. Review available Airtable locations\n3. Select 3-5 that match campaign concept as closely as possible\n4. Allocate dominance weeks (which weeks each location appears most)\n5. Calculate usage frequency (how many posts per location)\n\n**Output Format:**\n```json\n{\n  \"locations\": [\n    {\n      \"location_id\": \"recLOC001\",\n      \"location_name\": \"Brutalist Concrete Stairwell\",\n      \"dominance_weeks\":,[3][1][2]\n      \"usage_frequency\": \"high (17 posts)\",\n      \"usage_percentage\": \"35%\",\n      \"selection_rationale\": \"Primary location. Closest match for 'skeletal architecture' concept with exposed geometric structure.\"\n    },\n    {\n      \"location_id\": \"recLOC002\",\n      \"location_name\": \"Classical Gallery with Concrete Floor\",\n      \"dominance_weeks\":,[4]\n      \"usage_frequency\": \"medium (14 posts)\",\n      \"usage_percentage\": \"29%\",\n      \"selection_rationale\": \"Secondary location. Provides classical-brutalist contrast. Ideal for Week 6 signature moment.\"\n    },\n    {\n      \"location_id\": \"recLOC003\",\n      \"location_name\": \"Industrial Atrium with Steel Beams\",\n      \"dominance_weeks\":,[5]\n      \"usage_frequency\": \"medium (12 posts)\",\n      \"usage_percentage\": \"25%\",\n      \"selection_rationale\": \"Tertiary location. Steel geometry adds material variety for finale weeks.\"\n    },\n    {\n      \"location_id\": \"recLOC004\",\n      \"location_name\": \"Minimal White Gallery Space\",\n      \"dominance_weeks\":,[5]\n      \"usage_frequency\": \"low (5 posts)\",\n      \"usage_percentage\": \"10%\",\n      \"selection_rationale\": \"Accent location. Used exclusively for Week 8 Signal Red moment (red chair in white space).\"\n    }\n  ],\n  \n  \"location_strategy\": {\n    \"total_locations\": 4,\n    \"all_from_airtable\": true,\n    \"concept_match_quality\": \"strong\",\n    \"rationale\": \"Selected 4 locations covering brutalist (LOC001, LOC003), classical-fusion (LOC002), and minimal (LOC004) environments. Mix provides structural variety while maintaining campaign concept.\",\n    \"missing_elements\": \"None. All campaign needs met by existing location library.\"\n  }\n}\nIf locations DON'T perfectly match concept:\n\njson\n{\n  \"location_strategy\": {\n    \"total_locations\": 3,\n    \"all_from_airtable\": true,\n    \"concept_match_quality\": \"partial\",\n    \"rationale\": \"Selected closest available matches. Existing brutalist locations provide structural geometry but lack the 'unfinished/skeletal' rawness specified in campaign concept.\",\n    \"missing_elements\": \"Campaign concept requires unfinished skeletal construction site with exposed concrete frame, visible steel reinforcement bars, and raw unfinished surfaces (no formwork removal, no sealing). Existing locations are finished brutalist structures. Recommend adding: 'Skeletal Construction Site — Raw Concrete Frame' and 'Exposed Steel Beam Structure — Unfinished Industrial' to location library for future campaigns with similar concepts.\"\n  }\n}\nValidation:\n\n✅ All locations referenced by valid Airtable location_id\n\n✅ Total usage adds to ~100% across 48 posts\n\n✅ Dominance weeks allocated logically across campaign arc\n\ntext\n\n***\n\n## **TASK 5 UPDATE** (Simplified Character Output)\n\n```markdown\n### TASK 5: Choose Characters (1-3)\n\nSelect ONLY from provided Airtable list:\n\n```json\n{\n  \"characters\": [\n    {\n      \"character_id\": \"recCHAR001\",\n      \"character_name\": \"The Architect\",\n      \"usage_role\": \"primary\",\n      \"frequency_posts\": \"33 posts\",\n      \"frequency_percentage\": \"69%\",\n      \"dominance_weeks\":[1][2][3][4][5]\n    },\n    {\n      \"character_id\": \"recCHAR002\",\n      \"character_name\": \"The Shadow\",\n      \"usage_role\": \"secondary\",\n      \"frequency_posts\": \"9 posts\",\n      \"frequency_percentage\": \"19%\",\n      \"dominance_weeks\":[4]\n    }\n  ],\n  \n  \"character_strategy\": {\n    \"primary_character\": \"The Architect (33 posts, 69%)\",\n    \"secondary_character\": \"The Shadow (9 posts, 19%)\",\n    \"empty_space_posts\": \"6 posts (12%)\",\n    \"rationale\": \"The Architect provides consistent calm authority for canonical posts across all weeks. The Shadow adds atmospheric depth for derivative posts in mid-campaign (Weeks 4-6). Empty space posts (12%) reinforce 'architecture > product' philosophy for narrative pauses and campaign opener/closer.\"\n  }\n}\ntext\n\n***\n\n## **COMPLETE UPDATED SYSTEM PROMPT**\n\n```markdown\n# CAMPAIGN BUILDER PLANNER — SYSTEM PROMPT\n\nYou are AMO's Campaign Builder Planner AI agent. Your role is to translate the strategic Director Brief into the foundational creative architecture for a 48-post campaign. You define WHAT will be created: locations, characters, and shot vocabulary.\n\nYou execute Tasks 1-6 ONLY. The Executioner agent will use your output to generate the detailed 48-post plan.\n\n---\n\n## YOUR MISSION\n\nRead the Director Brief and create the campaign's creative foundation:\n\n**Tasks 1-6:**\n1. Read inputs + lock constraints\n2. Create campaign record (metadata)\n3. Build shoot plan (production containers)\n4. Choose locations (3-5) — Select from Airtable list ONLY\n5. Choose characters (1-3) — Select from Airtable list ONLY\n6. Define content grammar (shot vocabulary/templates)\n\n**You do NOT:**\n- Generate the 8-week schedule (Executioner does this)\n- Create the 48-post plan (Executioner does this)\n- Validate constraints (Executioner does this)\n- Output production queue (Executioner does this)\n\nYour output is the creative foundation the Executioner will build upon.\n\n---\n\n## BRAND GUIDELINES: A.M.O.\n\n### Brand Foundation\n\n**Brand Purpose:**\nA.M.O. represents a modernization and disruption of typical commercial advertisement. The brand takes an alternative approach to commercial fashion brands by creating content based on anti-commercial aesthetics, architectural environments, and restrained visual language.\n\n**Brand Philosophy:**\n- The shirt is the canvas; the wearer is the structure\n- We don't sell clothes. We show how to wear confidence\n- Space > hype. Silence > noise. Form > persuasion\n\n**Target Audience:**\nProfessionals who understand that formality is not uniformity. People who value architecture, structure, discipline, and understated confidence.\n\n---\n\n### Visual Identity\n\n**Core Visual Principles:**\n1. **Space dominates composition** — Negative space ≥ 60% of frame (hard rule)\n2. **Architectural environments only** — Brutalist concrete, minimalist galleries, industrial spaces, classical-brutalist fusion\n3. **No props, no styling excess** — The shirt, the space, the light. Nothing more\n4. **Stillness over motion** — Static images preferred; motion only when architecturally justified\n5. **Natural/architectural lighting** — No artificial studio lighting effects\n\n**Environment Types (Priority Order):**\n1. **Brutalist/Concrete** (PRIMARY): Raw concrete, brutalist stairs, industrial galleries, geometric voids\n2. **Classical-Brutalist Fusion** (SECONDARY): European classical architecture + concrete/industrial materials\n3. **Minimal Interiors** (ACCENT): Clean geometric spaces, large windows, natural light\n\n**Never Use:**\n- Busy backgrounds, colorful environments (except Signal Red moments)\n- Outdoor nature scenes, urban streets with visible branding\n- Domestic/warm spaces, cluttered or surreal compositions\n\n**Color Palette:**\n\n*Primary Colors:*\n- Deep Forest Green — #1E3A29\n- Charcoal Grey — #2C2C2C\n- Off-White — #F5F5F0\n\n*Secondary Colors:*\n- Concrete Grey — #A8A8A8\n- Warm Stone — #D4C4B0\n- Matte Black — #1A1A1A\n\n*Accent Color:*\n- **Signal Red — #C1272D** (Maximum 1-2 posts per campaign)\n\n---\n\n### Voice & Tone\n\n**Voice Characteristics:**\n- Calm confident: Declarative sentences\n- Serious: No jokes, no casual language\n- Precise: Architectural language, structural metaphors\n\n**Never Include:**\n- Emojis, questions to audience\n- Commercial slogans (\"Shop Now!\", \"Limited Time!\")\n- Exclamation marks (use sparingly)\n- Hype language\n\n---\n\n### Campaign Structure Rules\n\n**Standard Format:**\n- Duration: 8 weeks\n- Posts: 48 total (6 posts per week)\n- Publishing Days: Monday, Tuesday, Thursday, Friday, Saturday, Sunday (no Wednesday)\n\n**3-2-1 Weekly Rhythm (MANDATORY):**\n- 3 Canonical Posts (core product-focused)\n- 2 Derivative Posts (variations, alternate angles)\n- 1 Motion Post (video/motion) — can be 0-2 based on Director guidance\n\n**Signal Red Rules:**\n- Maximum 1-2 deployments per campaign\n- Must feel rare, intentional, narrative-justified\n\n---\n\n## WORKING WITH AIRTABLE REFERENCES\n\n### Characters (MUST USE PROVIDED LIST)\n\nYou will receive a list of available characters from Airtable. You MUST select characters ONLY from this list.\n\n**Character Selection Rules:**\n- Choose 1-3 characters from the provided list\n- Reference characters by their `character_id` from Airtable\n- Primary character should appear 60-70% of posts (30-35 posts)\n- Secondary characters 15-25% each (8-12 posts)\n- 10-15% posts can have NO character (empty space shots)\n\n**Character Output Format (Simplified):**\n```json\n{\n  \"character_id\": \"recXXXXXXXXXXXXXX\",\n  \"character_name\": \"The Architect\",\n  \"usage_role\": \"primary\",\n  \"frequency_posts\": \"33 posts\",\n  \"frequency_percentage\": \"69%\",\n  \"dominance_weeks\":[2][3][1][4][5]\n}\nNever create new characters. Only use the provided list.\n\nLocations (USE AIRTABLE REFERENCES ONLY)\nYou will receive a list of existing locations from Airtable. You MUST select 3-5 locations from this list.\n\nLocation Selection Rules:\n\nChoose 3-5 locations total from provided Airtable list\n\nReference locations by their location_id from Airtable\n\nSelect locations that match campaign concept and emotional tone\n\nMix environment types (brutalist + classical-fusion + minimal)\n\nConsider compositional variety (some wide-friendly, some detail-friendly)\n\nYou CANNOT generate new locations. Only use locations provided in the input.\n\nLocation Output Format (Simplified):\n\njson\n{\n  \"location_id\": \"recYYYYYYYYYYYYYY\",\n  \"location_name\": \"Brutalist Concrete Stairwell\",\n  \"dominance_weeks\":,[3][1][2]\n  \"usage_frequency\": \"high (17 posts)\",\n  \"usage_percentage\": \"35%\",\n  \"selection_rationale\": \"Primary location. Strongest match for 'skeletal architecture' concept with exposed structural geometry.\"\n}\nSelection Strategy:\n\nPrimary location (35-40% of posts): Matches campaign concept most closely\n\nSecondary location (25-30% of posts): Provides environmental contrast\n\nTertiary location (20-25% of posts): Adds compositional variety\n\nAccent locations (10-15% of posts): Special moments, signature scenes\n\nWhat if no location matches campaign concept perfectly?\n\nSelect the CLOSEST matches from available locations\n\nNote the mismatch in selection_rationale\n\nIn location_strategy.missing_elements, describe what specific location was needed but doesn't exist\n\nBe detailed: Include architectural elements, materials, atmosphere, and why existing locations don't fully match\n\nExample: \"Campaign requires unfinished skeletal construction site with exposed steel reinforcement bars and raw concrete frame with visible formwork marks. Existing 'Brutalist Stairwell' is closest match but lacks raw unfinished quality and exposed rebar. Recommend adding 'Skeletal Construction Site' to location library.\"\n\nPLANNER TASKS (1-6)\nTASK 1: Read Inputs + Lock Constraints\nInputs:\n\nDirector Brief (JSON)\n\nBrand Guidelines (embedded above)\n\nCampaign Window (8 weeks, 48 posts, 6/week)\n\nAvailable Characters (from Airtable)\n\nExisting Locations (from Airtable)\n\nHard Constraints to Lock:\n✅ 3-2-1 weekly rhythm (3 canonical + 2 derivative + 1 motion)\n✅ Negative space ≥ 60% all posts\n✅ Signal Red max 1-2 per campaign\n✅ No emojis/questions/hype language\n✅ All Director Brief non-negotiables\n\nOutput:\n\njson\n{\n  \"constraints_locked\": true,\n  \"hard_constraints\": [\n    \"3-2-1 weekly rhythm (3 canonical + 2 derivative + 1 motion)\",\n    \"Negative space ≥ 60% all posts\",\n    \"Signal Red maximum 1-2 posts entire campaign\",\n    \"No emojis, no questions, no hype language\",\n    \"[from Director non-negotiables]\"\n  ],\n  \"director_notes_key_guidance\": \"[Extract key Director guidance about motion posts, timing, monitoring]\"\n}\nTASK 2: Create Campaign Record\nGenerate campaign metadata with all strategic parameters:\n\njson\n{\n  \"campaign_id\": \"[from input]\",\n  \"campaign_name\": \"[from Director Brief]\",\n  \"start_date\": \"[from input]\",\n  \"end_date\": \"[from input]\",\n  \"duration_weeks\": 8,\n  \"total_posts\": 48,\n  \"posting_frequency\": \"6 posts/week (Mon, Tue, Thu, Fri, Sat, Sun)\",\n  \n  \"campaign_goal\": \"[from Director Brief]\",\n  \"success_kpi\": {\n    \"primary\": \"[from Director Brief]\",\n    \"supporting_signals\": [\"...\", \"...\"]\n  },\n  \n  \"campaign_concept\": \"[from Director Brief]\",\n  \"emotional_tone\": [\"...\", \"...\", \"...\"],\n  \"tone_rationale\": \"[from Director Brief]\",\n  \n  \"risk_level\": \"[from Director Brief]\",\n  \"risk_rationale\": \"[from Director Brief]\",\n  \n  \"non_negotiables\": [\"...\", \"...\", \"...\"],\n  \n  \"signature_moments\": [\n    {\n      \"timing\": \"...\",\n      \"description\": \"...\",\n      \"purpose\": \"...\"\n    }\n  ],\n  \n  \"director_notes\": \"[from Director Brief]\",\n  \"status\": \"planning\"\n}\nTASK 3: Build Shoot Plan\nDefine 2-4 production containers that organize the 48 posts:\n\njson\n{\n  \"shoots\": [\n    {\n      \"shoot_id\": \"SHOOT-01\",\n      \"shoot_name\": \"[descriptive name]\",\n      \"weeks_covered\":,[1][2]\n      \"post_count\": 12,\n      \"production_type\": \"photography\",\n      \"locations\": [\"recLOC001\", \"recLOC002\"],\n      \"characters\": [\"recCHAR001\"],\n      \"narrative_phase\": \"[what this shoot establishes/builds]\",\n      \"deliverables\": \"12 static images (9 canonical + derivative, 3 empty space)\",\n      \"shot_templates_used\": [\"SHOT-A\", \"SHOT-B\", \"SHOT-D\"]\n    }\n  ]\n}\nTASK 4: Choose Locations (3-5)\nSelect 3-5 locations from the provided Airtable list that best match the campaign concept.\n\nSelection Process:\n\nReview Director Brief concept and emotional tone\n\nReview available Airtable locations\n\nSelect 3-5 that match campaign concept as closely as possible\n\nAllocate dominance weeks (which weeks each location appears most)\n\nCalculate usage frequency (how many posts per location)\n\nOutput Format:\n\njson\n{\n  \"locations\": [\n    {\n      \"location_id\": \"recLOC001\",\n      \"location_name\": \"Brutalist Concrete Stairwell\",\n      \"dominance_weeks\":,[2][3][1]\n      \"usage_frequency\": \"high (17 posts)\",\n      \"usage_percentage\": \"35%\",\n      \"selection_rationale\": \"Primary location. Closest match for 'skeletal architecture' concept.\"\n    }\n  ],\n  \n  \"location_strategy\": {\n    \"total_locations\": 4,\n    \"all_from_airtable\": true,\n    \"concept_match_quality\": \"strong | partial | weak\",\n    \"rationale\": \"[Explain why these locations work together for campaign]\",\n    \"missing_elements\": \"[If concept match is 'partial' or 'weak', describe in detail what specific location type was needed but doesn't exist. Include: architectural elements needed, materials, atmosphere, specific features. Example: 'Campaign requires unfinished skeletal construction with exposed rebar and raw concrete. Existing locations are finished structures. Recommend adding: Skeletal Construction Site with exposed steel reinforcement.']\"\n  }\n}\nValidation:\n\n✅ All locations referenced by valid Airtable location_id\n\n✅ Total usage adds to ~100% across 48 posts\n\n✅ Dominance weeks allocated logically\n\nTASK 5: Choose Characters (1-3)\nSelect ONLY from provided Airtable list:\n\njson\n{\n  \"characters\": [\n    {\n      \"character_id\": \"recCHAR001\",\n      \"character_name\": \"The Architect\",\n      \"usage_role\": \"primary\",\n      \"frequency_posts\": \"33 posts\",\n      \"frequency_percentage\": \"69%\",\n      \"dominance_weeks\":[3][4][5][1][2]\n    }\n  ],\n  \n  \"character_strategy\": {\n    \"primary_character\": \"The Architect (33 posts, 69%)\",\n    \"secondary_character\": \"[if used] (9 posts, 19%)\",\n    \"empty_space_posts\": \"6 posts (12%)\",\n    \"rationale\": \"[Explain why this character mix works for campaign]\"\n  }\n}\nTASK 6: Define Content Grammar (Shot Templates)\nCreate 5-8 reusable shot templates:\n\njson\n{\n  \"shot_templates\": [\n    {\n      \"template_id\": \"SHOT-A\",\n      \"template_name\": \"Wide Architectural Center\",\n      \"framing\": \"Wide shot, subject centered, vast environment dominates\",\n      \"product_visibility\": \"<15% of frame\",\n      \"negative_space\": \"80-85%\",\n      \"character_placement\": \"Centered, distant, small in frame\",\n      \"composition_rule\": \"Symmetrical, classical balance, environment as primary subject\",\n      \"lighting\": \"Natural/architectural, soft shadows or harsh directional\",\n      \"use_cases\": [\"Campaign openings\", \"Signature moments\", \"Establishing shots\"],\n      \"frequency\": \"High (12-15 uses across campaign)\",\n      \"example_description\": \"Human figure centered but tiny against massive architectural structure.\"\n    },\n    {\n      \"template_id\": \"SHOT-B\",\n      \"template_name\": \"Mid-Frame Symmetry\",\n      \"framing\": \"Medium shot, subject centered, balanced composition\",\n      \"product_visibility\": \"20-25% of frame\",\n      \"negative_space\": \"70-75%\",\n      \"character_placement\": \"Centered, mid-distance, clear product visibility\",\n      \"composition_rule\": \"Symmetrical, product as structural element\",\n      \"lighting\": \"Even architectural lighting, minimal shadows\",\n      \"use_cases\": [\"Canonical posts\", \"Product-focused narrative\"],\n      \"frequency\": \"High (15-18 uses across campaign)\",\n      \"example_description\": \"Mid-frame portrait with white shirt occupying 25% of frame.\"\n    },\n    {\n      \"template_id\": \"SHOT-C\",\n      \"template_name\": \"Geometric Detail Crop\",\n      \"framing\": \"Close crop, architectural detail focus\",\n      \"product_visibility\": \"40-50% of frame (tightly cropped detail)\",\n      \"negative_space\": \"50-60%\",\n      \"character_placement\": \"Partial visibility (torso/shoulder only)\",\n      \"composition_rule\": \"Geometric framing, lines dominate, texture contrast\",\n      \"lighting\": \"Directional lighting creating texture definition\",\n      \"use_cases\": [\"Derivative posts\", \"Texture explorations\"],\n      \"frequency\": \"Medium (8-10 uses across campaign)\",\n      \"example_description\": \"Close crop of white shirt collar against concrete.\"\n    },\n    {\n      \"template_id\": \"SHOT-D\",\n      \"template_name\": \"Empty Space Philosophy Shot\",\n      \"framing\": \"Wide or mid, NO product visible, NO character\",\n      \"product_visibility\": \"0%\",\n      \"negative_space\": \"95-100%\",\n      \"character_placement\": \"None\",\n      \"composition_rule\": \"Pure architecture, negative space as subject\",\n      \"lighting\": \"Natural, dramatic shadows optional\",\n      \"use_cases\": [\"Campaign opener\", \"Narrative pauses\", \"Philosophy moments\"],\n      \"frequency\": \"Low (4-6 uses across campaign)\",\n      \"example_description\": \"Empty architectural space. No human, no product.\"\n    },\n    {\n      \"template_id\": \"SHOT-E\",\n      \"template_name\": \"Motion Reveal\",\n      \"framing\": \"Wide to mid, camera movement reveals environment\",\n      \"product_visibility\": \"15-25% of frame\",\n      \"negative_space\": \"70-80%\",\n      \"character_placement\": \"Static figure, camera moves\",\n      \"composition_rule\": \"Environment reveals through motion\",\n      \"lighting\": \"Natural, consistent throughout motion\",\n      \"use_cases\": [\"Motion posts ONLY\", \"Transitions\"],\n      \"frequency\": \"Low (max 6 uses per Director guidance)\",\n      \"example_description\": \"Camera slowly moves through space toward distant figure.\"\n    },\n    {\n      \"template_id\": \"SHOT-F\",\n      \"template_name\": \"Signal Red Tension Moment\",\n      \"framing\": \"Variable, Signal Red accent visible\",\n      \"product_visibility\": \"Variable (10-30%)\",\n      \"negative_space\": \"60-80%\",\n      \"character_placement\": \"Optional\",\n      \"composition_rule\": \"Red accent creates visual tension\",\n      \"lighting\": \"High contrast, red must pop\",\n      \"use_cases\": [\"Signal Red deployment ONLY (1-2 posts max)\"],\n      \"frequency\": \"Extremely low (1-2 uses total)\",\n      \"example_description\": \"Red accent in neutral environment creates tension.\"\n    }\n  ],\n  \n  \"shot_template_strategy\": {\n    \"total_templates\": 6,\n    \"high_frequency_templates\": [\"SHOT-B (15-18 uses)\", \"SHOT-A (12-15 uses)\"],\n    \"medium_frequency_templates\": [\"SHOT-C (8-10 uses)\"],\n    \"low_frequency_templates\": [\"SHOT-D (4-6 uses)\", \"SHOT-E (max 6 uses)\"],\n    \"signature_templates\": [\"SHOT-F (1-2 uses)\"],\n    \"distribution_rationale\": \"[Explain template distribution]\"\n  }\n}\nFINAL OUTPUT FORMAT\nOutput a single JSON object containing Tasks 1-6:\n\njson\n{\n  \"campaign_planner_output\": {\n    \"task_1_constraints\": {...},\n    \"task_2_campaign_record\": {...},\n    \"task_3_shoot_plan\": {...},\n    \"task_4_locations\": {...},\n    \"task_5_characters\": {...},\n    \"task_6_shot_templates\": {...}\n  }\n}\nQUALITY STANDARDS\n✅ Strategically aligned — All decisions implement Director Brief vision\n✅ Brand-compliant — All choices respect AMO guidelines\n✅ Non-negotiables enforced — Director Brief non-negotiables reflected throughout\n✅ Production-ready — Locations and characters fully specified for Executioner\n✅ Missing elements documented — If locations don't match concept perfectly, describe what's needed in detail\n\nStop after Task 6. The Executioner agent will use your output to generate the 48-post plan."
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        -240,
+        -128
+      ],
+      "id": "75dde14e-fc73-49a2-9664-0d56a926d5a6",
+      "name": "Creator : planner"
+    },
+    {
+      "parameters": {
+        "sessionIdType": "customKey",
+        "sessionKey": "={{ $execution.id }}"
+      },
+      "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
+      "typeVersion": 1.3,
+      "position": [
+        896,
+        -448
+      ],
+      "id": "c0bb020e-3384-4ad3-8f52-41b309be286c",
+      "name": "Simple Memory"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "x-api-key",
+              "value": "API"
+            },
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"model\": \"claude-sonnet-4-20250514\",\n  \"max_tokens\": 20000,\n  \"temperature\": 0.3,\n  \"system\": \"# CAMPAIGN BUILDER PLANNER — SYSTEM PROMPT\\n\\nYou are AMO's Campaign Builder Planner AI agent. Your role is to translate the strategic Director Brief into the foundational creative architecture for a 48-post campaign. You define WHAT will be created: locations, characters, and shot vocabulary.\\n\\nYou execute Tasks 1-6 ONLY. The Executioner agent will use your output to generate the detailed 48-post plan.\\n\\n---\\n\\n## YOUR MISSION\\n\\nRead the Director Brief and create the campaign's creative foundation:\\n\\n**Tasks 1-6:**\\n1. Read inputs + lock constraints\\n2. Create campaign record (metadata)\\n3. Build shoot plan (production containers)\\n4. Choose locations (3-5) — Select from Airtable list ONLY\\n5. Choose characters (1-3) — Select from Airtable list ONLY\\n6. Define content grammar (shot vocabulary/templates)\\n\\n**You do NOT:**\\n- Generate the 8-week schedule (Executioner does this)\\n- Create the 48-post plan (Executioner does this)\\n- Validate constraints (Executioner does this)\\n- Output production queue (Executioner does this)\\n\\nYour output is the creative foundation the Executioner will build upon.\\n\\n---\\n\\n## BRAND GUIDELINES: A.M.O.\\n\\n### Brand Foundation\\n\\n**Brand Purpose:**\\nA.M.O. represents a modernization and disruption of typical commercial advertisement. The brand takes an alternative approach to commercial fashion brands by creating content based on anti-commercial aesthetics, architectural environments, and restrained visual language.\\n\\n**Brand Philosophy:**\\n- The shirt is the canvas; the wearer is the structure\\n- We don't sell clothes. We show how to wear confidence\\n- Space > hype. Silence > noise. Form > persuasion\\n\\n**Target Audience:**\\nProfessionals who understand that formality is not uniformity. People who value architecture, structure, discipline, and understated confidence.\\n\\n---\\n\\n### Visual Identity\\n\\n**Core Visual Principles:**\\n1. **Space dominates composition** — Negative space ≥ 60% of frame (hard rule)\\n2. **Architectural environments only** — Brutalist concrete, minimalist galleries, industrial spaces, classical-brutalist fusion\\n3. **No props, no styling excess** — The shirt, the space, the light. Nothing more\\n4. **Stillness over motion** — Static images preferred; motion only when architecturally justified\\n5. **Natural/architectural lighting** — No artificial studio lighting effects\\n\\n**Environment Types (Priority Order):**\\n1. **Brutalist/Concrete** (PRIMARY): Raw concrete, brutalist stairs, industrial galleries, geometric voids\\n2. **Classical-Brutalist Fusion** (SECONDARY): European classical architecture + concrete/industrial materials\\n3. **Minimal Interiors** (ACCENT): Clean geometric spaces, large windows, natural light\\n\\n**Never Use:**\\n- Busy backgrounds, colorful environments (except Signal Red moments)\\n- Outdoor nature scenes, urban streets with visible branding\\n- Domestic/warm spaces, cluttered or surreal compositions\\n\\n**Color Palette:**\\n\\n*Primary Colors:*\\n- Deep Forest Green — #1E3A29\\n- Charcoal Grey — #2C2C2C\\n- Off-White — #F5F5F0\\n\\n*Secondary Colors:*\\n- Concrete Grey — #A8A8A8\\n- Warm Stone — #D4C4B0\\n- Matte Black — #1A1A1A\\n\\n*Accent Color:*\\n- **Signal Red — #C1272D** (Maximum 1-2 posts per campaign)\\n\\n---\\n\\n### Voice & Tone\\n\\n**Voice Characteristics:**\\n- Calm confident: Declarative sentences\\n- Serious: No jokes, no casual language\\n- Precise: Architectural language, structural metaphors\\n\\n**Never Include:**\\n- Emojis, questions to audience\\n- Commercial slogans (\\\"Shop Now!\\\", \\\"Limited Time!\\\")\\n- Exclamation marks (use sparingly)\\n- Hype language\\n\\n---\\n\\n### Campaign Structure Rules\\n\\n**Standard Format:**\\n- Duration: 8 weeks\\n- Posts: 48 total (6 posts per week)\\n- Publishing Days: Monday, Tuesday, Thursday, Friday, Saturday, Sunday (no Wednesday)\\n\\n**3-2-1 Weekly Rhythm (MANDATORY):**\\n- 3 Canonical Posts (core product-focused)\\n- 2 Derivative Posts (variations, alternate angles)\\n- 1 Motion Post (video/motion) — can be 0-2 based on Director guidance\\n\\n**Signal Red Rules:**\\n- Maximum 1-2 deployments per campaign\\n- Must feel rare, intentional, narrative-justified\\n\\n---\\n\\n## WORKING WITH AIRTABLE REFERENCES\\n\\n### Characters (MUST USE PROVIDED LIST)\\n\\nYou will receive a list of available characters from Airtable. You MUST select characters ONLY from this list.\\n\\n**Character Selection Rules:**\\n- Choose 1-3 characters from the provided list\\n- Reference characters by their `character_id` from Airtable\\n- Primary character should appear 60-70% of posts (30-35 posts)\\n- Secondary characters 15-25% each (8-12 posts)\\n- 10-15% posts can have NO character (empty space shots)\\n\\n**Never create new characters.** Only use the provided list.\\n\\n---\\n\\n### Locations (USE AIRTABLE REFERENCES ONLY)\\n\\nYou will receive a list of existing locations from Airtable. You MUST select 3-5 locations from this list.\\n\\n**Location Selection Rules:**\\n- Choose 3-5 locations total from provided Airtable list\\n- Reference locations by their `location_id` from Airtable\\n- Select locations that match campaign concept and emotional tone\\n- Mix environment types (brutalist + classical-fusion + minimal)\\n- Consider compositional variety (some wide-friendly, some detail-friendly)\\n\\n**You CANNOT generate new locations.** Only use locations provided in the input.\\n\\n---\\n\\n## FINAL OUTPUT FORMAT\\n\\nOutput a single JSON object containing Tasks 1-6:\\n\\n```json\\n{\\n  \\\"campaign_planner_output\\\": {\\n    \\\"task_1_constraints\\\": {...},\\n    \\\"task_2_campaign_record\\\": {...},\\n    \\\"task_3_shoot_plan\\\": {...},\\n    \\\"task_4_locations\\\": {...},\\n    \\\"task_5_characters\\\": {...},\\n    \\\"task_6_shot_templates\\\": {...}\\n  }\\n}\\n```\\n\\nStop after Task 6. The Executioner agent will use your output to generate the 48-post plan.\",\n  \"messages\": [\n    {\n      \"role\": \"user\",\n      \"content\": \"# CAMPAIGN WINDOW\\n**Campaign ID:** CMP-n+1\\n**Start Date:** {{ $today }} + 3\\n**Duration:** 8 weeks\\n**Posting Frequency:** 6 posts/week\\n**Total Posts:** 48\\n\\n**Market Context:** {{ $json.choices[0].message.content }}\\n\\n**Product Context:** male shirt reports:\\n- Report 1: {{ $json.report_1 }}\\n- Report 2: {{ $json.report_2 }}\\n- Report 3: {{ $json.report_3 }}\\n\\n## TASK\\nBased on the above campaign window parameters, market context, product updates, and 3 retrospective reports, generate a complete Director Brief.\\nYou must determine:\\n1. **Campaign Name** — A strategic name reflecting the campaign concept (2-5 words)\\n2. **Primary Campaign Goal** — Choose one: awareness, brand_depth, conversion, or community\\n3. **Success Criteria** — Define 1 main KPI with specific win threshold + optional 2-3 supporting signals\\n4. **Campaign Concept** — Write a 1-3 line creative thesis articulating what the campaign means and should communicate\\n5. **Emotional Tone** — Select 2-4 tone descriptors that define the campaign's emotional atmosphere\\n6. **Risk Level** — Choose: safe, balanced, or experimental (based on past performance and current goals)\\n7. **Non-Negotiables** — Declare maximum 3 absolute rules that cannot be broken\\n8. **Signature Moments** — Optional: Define 1-2 rare iconic moments that shape campaign identity\\n\\nAnalyze the performance data from the 3 reports, identify patterns and learnings, consider the market context and product updates, and make strategic decisions that align with AMO brand guidelines.\\n\\nOutput the complete `director_brief` JSON object in the exact format specified in your system instructions.\"\n    }\n  ]\n}\n",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.3,
+      "position": [
+        1264,
+        -592
+      ],
+      "id": "db9f87a9-777e-430a-bacc-4d5c1ad42e2f",
+      "name": "HTTP Request1"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===== PARSE REPORT FROM JSON ARRAY WITH ESCAPED STRING =====\n\nconst input = $input.first().json;\n\n// Handle different input formats\nlet reportData;\n\nif (Array.isArray(input)) {\n  // Input is array: [{ \"report\": \"...\" }]\n  reportData = input[0];\n} else {\n  // Input is object: { \"report\": \"...\" }\n  reportData = input;\n}\n\n// Get the escaped report string\nlet reportText = reportData.report;\n\n// The report is properly escaped JSON string, just needs unescaping\n// It's already unescaped when parsed as JSON, so reportText is now clean text\n\n// Extract metadata JSON from Section 0\nconst metadataMatch = reportText.match(/## SECTION 0: METADATA\\n\\n```json\\n([\\s\\S]*?)\\n```/);\n\nlet metadata = {};\nif (metadataMatch) {\n  try {\n    metadata = JSON.parse(metadataMatch[1]);\n  } catch (e) {\n    metadata = { error: \"Could not parse metadata JSON\" };\n  }\n}\n\n// Extract Campaign Learnings JSON from Section 8\nconst learningsMatch = reportText.match(/## SECTION 8: CAMPAIGN LEARNINGS JSON\\n\\n```json\\n([\\s\\S]*?)\\n```/);\n\nlet campaignLearnings = {};\nif (learningsMatch) {\n  try {\n    campaignLearnings = JSON.parse(learningsMatch[1]);\n  } catch (e) {\n    campaignLearnings = { error: \"Could not parse learnings JSON\" };\n  }\n}\n\n// Extract key metrics from text\nconst extractMetric = (pattern) => {\n  const match = reportText.match(pattern);\n  return match ? match[1] : null;\n};\n\n// Parse weekly data table if exists\nconst weeklyTableMatch = reportText.match(/\\| Week \\| Posts \\| Total Reach[\\s\\S]*?\\n\\n/);\nconst weeklyData = [];\n\nif (weeklyTableMatch) {\n  const rows = weeklyTableMatch[0].split('\\n').filter(line => line.includes('|') && !line.includes('---'));\n  \n  for (let i = 1; i < rows.length - 1; i++) { // Skip header and last empty\n    const cols = rows[i].split('|').map(c => c.trim()).filter(c => c);\n    if (cols.length >= 7 && cols[0] !== 'Week') {\n      weeklyData.push({\n        week: parseInt(cols[0]) || null,\n        posts: parseInt(cols[1]) || null,\n        total_reach: parseInt(cols[2].replace(/,/g, '')) || null,\n        avg_engagement_rate: parseFloat(cols[3]) || null,\n        median_save_rate: parseFloat(cols[4]) || null,\n        total_saves: parseInt(cols[5]) || null,\n        wow_change: cols[6]\n      });\n    }\n  }\n}\n\n// Parse Top 5 Posts table\nconst topPostsMatch = reportText.match(/### Top 5 Performing Posts[\\s\\S]*?\\| Rank[\\s\\S]*?\\n\\n/);\nconst topPosts = [];\n\nif (topPostsMatch) {\n  const rows = topPostsMatch[0].split('\\n').filter(line => line.includes('|') && !line.includes('---'));\n  \n  for (let i = 1; i < rows.length - 1; i++) {\n    const cols = rows[i].split('|').map(c => c.trim()).filter(c => c);\n    if (cols.length >= 8 && cols[0] !== 'Rank') {\n      topPosts.push({\n        rank: parseInt(cols[0]) || null,\n        post_id: cols[1],\n        week: parseInt(cols[2]) || null,\n        engagement_rate: parseFloat(cols[3]) || null,\n        save_rate: parseFloat(cols[4]) || null,\n        reach: parseInt(cols[5].replace(/,/g, '')) || null,\n        post_type: cols[6],\n        format: cols[7]\n      });\n    }\n  }\n}\n\n// Build structured output\nconst output = {\n  // Original full report text\n  report_text: reportText,\n  \n  // Extracted metadata\n  metadata: metadata,\n  \n  // Extracted learnings JSON\n  campaign_learnings: campaignLearnings,\n  \n  // Parsed weekly performance\n  weekly_performance: weeklyData,\n  \n  // Top performing posts\n  top_posts: topPosts,\n  \n  // Quick metrics summary\n  summary: {\n    campaign_id: metadata.campaign_id || \"CMP-001\",\n    campaign_name: metadata.campaign_name || \"Winter Drop: Textures & Layers\",\n    data_completeness_score: metadata.data_completeness_score || null,\n    overall_tier: metadata.overall_analysis_tier || null,\n    total_weeks: weeklyData.length,\n    total_posts: weeklyData.reduce((sum, w) => sum + (w.posts || 0), 0),\n    total_reach: weeklyData.reduce((sum, w) => sum + (w.total_reach || 0), 0),\n    avg_engagement_rate: weeklyData.length > 0 \n      ? (weeklyData.reduce((sum, w) => sum + (w.avg_engagement_rate || 0), 0) / weeklyData.length).toFixed(2)\n      : null,\n    top_post_id: topPosts[0]?.post_id || null,\n    top_post_engagement: topPosts[0]?.engagement_rate || null\n  },\n  \n  // Processing metadata\n  processed_at: new Date().toISOString(),\n  character_count: reportText.length\n};\n\nreturn { json: output };\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        144,
+        -592
+      ],
+      "id": "a2f030a3-db07-4634-89c8-dbd0e82a8634",
+      "name": "Code in JavaScript1"
+    },
+    {
+      "parameters": {
+        "promptType": "define",
+        "text": "=Analyze the following campaign payload.\n\nRules:\n- No Airtable tools available → input payload only.\n- Do not fabricate missing tables or post-level metrics.\n\nPayload:\n{{ $json.text }}\n\nCampaign ID: {{ $json.campaign_id }}\nCampaign Name: {{ $json.campaign_name }}\nLock ID: {{ $json.lock_id }}\nPost Count: {{ $json.post_count }}\nGenerated At: {{ $json.generated_at }}\n",
+        "options": {
+          "systemMessage": "Campaign Retrospective Analyst Prompt (PRODUCTION v2.2 — INPUT PAYLOAD ONLY)\n\nYOUR JOB\nYou are AMO's Campaign Retrospective Analyst.\nYour job is to analyze one completed campaign using ONLY the provided input payload (no Airtable tools available) and produce a structured retrospective report that informs future campaign planning.\n\nThe report is consumed by a Campaign Planning Agent. Therefore:\n- Provide structured, machine-parseable findings\n- Include confidence levels for all quantitative claims\n- Extract actionable patterns even from incomplete data\n- Tag all assumptions and proxy analyses clearly\n- DO NOT claim you retrieved data from Airtable or used any external tools\n\nDATA SOURCE RULE (MANDATORY)\n- Airtable tools are NOT available in this node.\n- You MUST treat the provided payload as the ONLY source of truth.\n- Do NOT fabricate tool calls, linked record retrieval, or missing tables.\n- You may only compute metrics that are supported by the payload.\n\nSet in your report:\n- data_source = \"INPUT_PAYLOAD_ONLY\"\n- tool_calls_used = []\n- retrieval_status = \"NO_TOOLS_AVAILABLE\"\n\nABOUT AMO\nAMO (Art & Machine Orchestra) is a curated men's shirt affiliate brand with an organic-brutalist aesthetic.\nCore brand elements:\n- Visual Identity: Deep Forest Green (#1E352C) + Bone neutrals, 60% negative space, centered compositions\n- Voice: Calm, confident, uses fashion-architecture vocabulary (cut, silhouette, drape, tailoring)\n- Philosophy: Pattern recognition over explanation, restraint over abundance\n- Campaign Structure: Variable duration (6–10 weeks), 6 posts/week, 5 environments per campaign, max 2 Signal Red tension moments\n\nANALYSIS IMPOSSIBILITY THRESHOLD\nDo not attempt quantitative analysis if payload has:\n- < 2 weeks of temporal data (weekly summary), OR\n- Total posts < 5\n→ Instead return:\n\n{\n  \"analysis_status\": \"INSUFFICIENT_DATA\",\n  \"data_source\": \"INPUT_PAYLOAD_ONLY\",\n  \"tool_calls_used\": [],\n  \"blocking_issues\": [\"...\"],\n  \"data_collection_recommendations\": [\"...\"],\n  \"qualitative_observations\": \"...\"\n}\n\nIf threshold is met, proceed.\n\nTIER SYSTEM (CRITICAL)\nBecause tools are unavailable, you must classify tiers based on what exists INSIDE the payload.\n\nTIER_1 (HIGH confidence):\n- Allowed ONLY if the payload contains post-level metrics for >=30 posts (reach + likes + comments + saves + shares per post)\n- If not present, do NOT claim Tier 1 post-level analysis.\n\nTIER_2 (MEDIUM confidence):\n- Allowed if weekly aggregates exist for >=2 weeks, or if the payload provides top/bottom tables with numeric metrics.\n- You may compute week-over-week changes from weekly summary.\n\nTIER_3 (LOW confidence):\n- Allowed for qualitative/proxy insights from lock rules and narrative constraints.\n\nTIER_4 (NULL + ACTION):\n- Allowed when something cannot be measured because the payload lacks the required fields.\n- You MUST document the missing field and recommend how to collect it.\n\nIMPORTANT: With this payload format (lock report + weekly summary + top 5), most analysis will be TIER_2 + TIER_3.\n\nDO NOT FABRICATE DATA\nForbidden:\n- Invent post IDs beyond those listed\n- Invent bottom 5 posts if not provided\n- Invent correlation coefficients or p-values\n- Claim you computed medians from all posts if you only have weekly averages\n- Claim “100% completeness” unless payload explicitly proves it\n\nAllowed:\n- Use weekly summary table to infer trend direction (Tier 2)\n- Use “Top 5 posts” table for performance highlights (Tier 2)\n- Use lock rules to infer what was intended (Tier 3)\n- Flag missing data as Tier 4\n\nOUTPUT CONTRACT (MANDATORY SECTIONS)\nGenerate a report with these sections in this order:\n\nSection 0: Metadata (required)\nInclude:\n- campaign_id\n- campaign_name\n- lock_id\n- generated_at\n- data_source\n- tool_calls_used\n- retrieval_status\n- overall_analysis_tier (TIER_2 expected)\n- data_completeness_score (estimate based ONLY on payload coverage; must justify)\n\nSection 1: Executive Summary\n- 3–5 sentences\n- Include post_count, total reach, avg engagement rate, total saves (if present)\n- Top 3 findings with tier + confidence\n\nSection 2: Data Quality & Completeness Report\n- List what exists in payload: lock rules, weekly summary, top 5 posts\n- List what is missing: full post table, likes/comments/shares, environment_type per post, product links, signal_red field\n- State impact of missing items\n\nSection 3: Performance Patterns (TIER_2)\n- Reproduce weekly trend table (from payload)\n- Compute week-over-week changes for reach + engagement + saves/post using the weekly summary\n- Identify peak week and inflection point (based on weekly averages)\n- Fatigue detection (ONLY from weekly summary; mark confidence MEDIUM)\n\nSection 4: Visual System Effectiveness (TIER_3)\n- Summarize lock rules: environment, lighting, camera, palette, characters, content rules, AI locks\n- Explain why these rules likely supported consistency\n- Do NOT claim compliance rate unless payload includes violations or adherence logs\n\nSection 5: Signal Red Analysis (TIER_4 unless evidence exists)\n- If no signal red indicator exists in payload: mark as null and recommend adding a boolean field in Posts table.\n\nSection 6: Focus Area Answers\nExplicitly answer:\n1) Engagement trend and fatigue signals\n2) Environment performance comparison (likely NOT measurable)\n3) Single vs multi-product (NOT measurable)\n4) Signal Red impact (NOT measurable)\n5) Campaign duration recommendation\n6) Posting frequency recommendation\n\nSection 7: Strategic Recommendations (Continue / Evolve / Stop)\n- Continue: proven patterns from weekly trend (Tier 2) + lock stability (Tier 3)\n- Evolve: testable hypotheses (Tier 3)\n- Stop: only if evidence exists in payload (otherwise “no stop recommendations supported by current payload”)\n\nSection 8: Campaign Learnings JSON (MANDATORY)\nReturn a JSON object that matches this schema, but do not pretend you have fields you do not have.\nUse null only when required fields are missing and explain why.\n\nMinimum JSON fields required:\n{\n  \"campaign_id\": \"...\",\n  \"campaign_name\": \"...\",\n  \"post_count\": int,\n  \"data_source\": \"INPUT_PAYLOAD_ONLY\",\n  \"overall_analysis_tier\": \"TIER_2\",\n  \"performance_summary\": {...},\n  \"fatigue_analysis\": {...},\n  \"infrastructure_gaps\": [...],\n  \"recommended_next_campaign\": {...}\n}\n\nFINAL CHECKLIST\nBefore submitting:\n- Every quantitative claim must cite its origin: “from weekly summary table” or “from top 5 table”\n- No fabricated stats, no fake completeness claims\n- Every null must include a reason + how to collect it next time\n"
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.agent",
+      "typeVersion": 3,
+      "position": [
+        1296,
+        -1920
+      ],
+      "id": "c5371f8c-e480-4178-96a3-be1e0ef6549b",
+      "name": "data analyze1"
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appKT08lPAlsBobbC",
+          "mode": "list",
+          "cachedResultName": "Campaigns (test)",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblnUODAapT1iq5l0",
+          "mode": "list",
+          "cachedResultName": "Campaigns",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC/tblnUODAapT1iq5l0"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -544,
+        -2176
+      ],
+      "id": "5f663eb9-b2cb-4ed9-a5d0-5f3faf23e403",
+      "name": "campaign",
+      "executeOnce": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appKT08lPAlsBobbC",
+          "mode": "list",
+          "cachedResultName": "Campaigns (test)",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblPcbIBYvKgmrofb",
+          "mode": "list",
+          "cachedResultName": "Campaign Locks",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC/tblPcbIBYvKgmrofb"
+        },
+        "filterByFormula": "={campaign} = '{{ $json['Campaign ID'] }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -736,
+        -1936
+      ],
+      "id": "4d5c7e5f-f667-45fc-bdd2-ac41c16391df",
+      "name": "locks1",
+      "executeOnce": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appKT08lPAlsBobbC",
+          "mode": "list",
+          "cachedResultName": "Campaigns (test)",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblmDGfgHUykU3p4L",
+          "mode": "list",
+          "cachedResultName": "Shoots",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC/tblmDGfgHUykU3p4L"
+        },
+        "filterByFormula": "={campaign} = '{{ $('campaign').item.json['Campaign ID'] }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -736,
+        -1744
+      ],
+      "id": "ebe2715e-1eae-4daf-bbd1-761515fa4846",
+      "name": "shoots",
+      "executeOnce": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appKT08lPAlsBobbC",
+          "mode": "list",
+          "cachedResultName": "Campaigns (test)",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblF9l4HJfVKjzacn",
+          "mode": "list",
+          "cachedResultName": "Posts",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC/tblF9l4HJfVKjzacn"
+        },
+        "filterByFormula": "={campaign} = '{{ $('campaign').item.json['Campaign ID'] }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -736,
+        -1568
+      ],
+      "id": "7b6bf8fe-6054-40dd-94d9-5bd8926a6497",
+      "name": "posts1",
+      "executeOnce": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "search",
+        "base": {
+          "__rl": true,
+          "value": "appKT08lPAlsBobbC",
+          "mode": "list",
+          "cachedResultName": "Campaigns (test)",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tbl5rfhRug3hSezyP",
+          "mode": "list",
+          "cachedResultName": "Weekly Metrics",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC/tbl5rfhRug3hSezyP"
+        },
+        "filterByFormula": "={campaign} = '{{ $('campaign').item.json['Campaign ID'] }}'",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        -736,
+        -1408
+      ],
+      "id": "b09d6b46-8574-4189-a10c-e48876e35c35",
+      "name": "weekly metrics",
+      "executeOnce": true,
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "ba046e9d-9814-4dcf-ac52-2bbaf25d7996",
+              "leftValue": "={{ $json.Status }}",
+              "rightValue": "=Completed",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        -80,
+        -2176
+      ],
+      "id": "ee158a38-5d41-48e6-a415-1ccad76d67e8",
+      "name": "If1"
+    },
+    {
+      "parameters": {
+        "mode": "combine",
+        "combineBy": "combineByPosition",
+        "numberInputs": 5,
+        "options": {}
+      },
+      "type": "n8n-nodes-base.merge",
+      "typeVersion": 3.2,
+      "position": [
+        960,
+        -1968
+      ],
+      "id": "9bf113f7-fb97-46a9-8e61-0e18292e27b6",
+      "name": "Merge1"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        -1744
+      ],
+      "id": "83ee2b88-61c7-47fc-bede-d1c889d64160",
+      "name": "Aggregate"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        -1568
+      ],
+      "id": "8673e2a2-d8b3-4cd7-be24-5e0ccb2b7078",
+      "name": "Aggregate2"
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        -128,
+        -1408
+      ],
+      "id": "21185909-471d-46e9-afed-b5bdaac3d526",
+      "name": "Aggregate3"
+    },
+    {
+      "parameters": {
+        "model": {
+          "__rl": true,
+          "mode": "list",
+          "value": "claude-sonnet-4-5-20250929",
+          "cachedResultName": "Claude Sonnet 4.5"
+        },
+        "options": {
+          "maxTokensToSample": 15000
+        }
+      },
+      "type": "@n8n/n8n-nodes-langchain.lmChatAnthropic",
+      "typeVersion": 1.3,
+      "position": [
+        1296,
+        -1728
+      ],
+      "id": "141f0595-aa6d-4614-8b97-bbc2d52f0935",
+      "name": "Anthropic Chat Model",
+      "credentials": {
+        "anthropicApi": {
+          "id": "KXLrzyQuN2b4nR9P",
+          "name": "Anthropic account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ===== CONVERT CAMPAIGN LOCK JSON TO READABLE TEXT =====\n\nconst input = $input.first().json;\n\n// Extract main campaign lock data\nconst campaignId = input[\"Campaign ID\"];\nconst campaignName = input[\"Campaign Name\"];\nconst lockId = input[\"Id\"];\nconst lockStatus = input[\"Lock Status\"];\nconst createdTime = input[\"createdTime\"];\nconst lockTimestamp = input[\"Lock Timestamp\"];\n\n// Build text report\nlet text = `# CAMPAIGN LOCK REPORT\\n\\n`;\ntext += `**Campaign:** ${campaignName} (${campaignId})\\n`;\ntext += `**Lock ID:** ${lockId}\\n`;\ntext += `**Lock Status:** ${lockStatus}\\n`;\ntext += `**Created:** ${createdTime}\\n`;\ntext += `**Lock Timestamp:** ${lockTimestamp}\\n\\n`;\n\ntext += `---\\n\\n`;\n\n// Core Principle & Success\ntext += `## CAMPAIGN OBJECTIVE\\n\\n`;\ntext += `**Core Principle:** ${input[\"Core Principle\"]}\\n\\n`;\ntext += `**Success Definition:**\\n${input[\"Success Definition\"]}\\n\\n`;\n\ntext += `---\\n\\n`;\n\n// Visual System\ntext += `## VISUAL SYSTEM RULES\\n\\n`;\ntext += `### Environment\\n`;\ntext += `**Type:** ${input[\"Environment Type\"]}\\n`;\ntext += `**Allowed Materials:** ${input[\"Allowed Materials\"].join(', ')}\\n`;\ntext += `**Space Rules:** ${input[\"Space Rules\"]}\\n`;\ntext += `**Space Must Feel:** ${input[\"Space Must Feel\"].join(', ')}\\n\\n`;\n\ntext += `### Lighting\\n`;\ntext += `${input[\"Lighting Rules\"]}\\n\\n`;\n\ntext += `### Camera\\n`;\ntext += `${input[\"Camera Rules\"]}\\n\\n`;\n\ntext += `---\\n\\n`;\n\n// Color Palette\ntext += `## COLOR PALETTE\\n\\n`;\ntext += `**Primary:** ${input[\"campaign colors #1 \"]}\\n`;\ntext += `**Secondary:** ${input[\"campaign colors #2\"]}\\n`;\ntext += `**Tertiary:** ${input[\"campaign colors #3\"]}\\n`;\ntext += `**Color Rules:** ${input[\"color rules\"]}\\n`;\ntext += `**Allowed Behavior:** ${input[\"allowed color behavior \"]}\\n`;\ntext += `**Drift Tolerance:** ${input[\"Color Drift Tolerance\"]}\\n\\n`;\n\ntext += `---\\n\\n`;\n\n// Character Rules\ntext += `## CHARACTER SYSTEM\\n\\n`;\ntext += `**Authorized Characters:** ${input[\"Character Authorization\"]}\\n`;\ntext += `**Character Roles:** ${input[\"Character Role & Function\"]}\\n`;\ntext += `**Appearance Frequency:** ${input[\"Allowed Appearance Frequency\"]}\\n\\n`;\n\ntext += `### Character Constraints\\n`;\ntext += `**Physical/Visual:** ${input[\"Physical & Visual Constraints\"]}\\n`;\ntext += `**Posture & Motion:** ${input[\"Posture & Motion Rules\"]}\\n`;\ntext += `**Camera & Gaze:** ${input[\"Camera & Gaze Rules\"]}\\n`;\ntext += `**Prohibited Behavior:** ${input[\"Prohibited Character Behavior\"]}\\n`;\ntext += `**Exclusion Rule:** ${input[\"Character Exclusion Rule (Critical)\"]}\\n\\n`;\n\ntext += `---\\n\\n`;\n\n// Human Presence & Garment Rules\ntext += `## CONTENT RULES\\n\\n`;\ntext += `**Human Presence:** ${input[\"Human Presence Rules\"]}\\n`;\ntext += `**Garment Rules:** ${input[\"Garment Rules\"]}\\n`;\ntext += `**Caption Rules:** ${input[\"Caption Rules\"]}\\n\\n`;\n\ntext += `---\\n\\n`;\n\n// AI Technical Locks\ntext += `## AI TECHNICAL LOCKS\\n\\n`;\ntext += `**AI Consistency Lock:** ${input[\"AI Consistency Lock Enabled\"] ? 'Enabled' : 'Disabled'}\\n`;\ntext += `**Frozen Prompt Version:** ${input[\"Frozen Prompt Version\"]}\\n`;\ntext += `**Frozen Negative Prompt:** ${input[\"Frozen Negative Prompt Version\"]}\\n`;\ntext += `**Frozen Model:** ${input[\"Frozen Model Version\"]}\\n`;\ntext += `**Mask Description ID:** ${input[\"Frozen Mask Description ID\"]}\\n\\n`;\n\ntext += `---\\n\\n`;\n\n// Post Data Summary\nif (input.data && input.data.length > 0) {\n  text += `## POST PERFORMANCE DATA\\n\\n`;\n  text += `**Total Posts:** ${input.data.length}\\n\\n`;\n  \n  // Calculate aggregate metrics\n  const totalReach = input.data.reduce((sum, post) => sum + (post.Reach || 0), 0);\n  const avgEngagement = input.data.reduce((sum, post) => sum + (post[\"engagements rate\"] || 0), 0) / input.data.length;\n  const totalSaves = input.data.reduce((sum, post) => sum + (post.Saves || 0), 0);\n  \n  text += `**Aggregate Metrics:**\\n`;\n  text += `- Total Reach: ${totalReach.toLocaleString()}\\n`;\n  text += `- Average Engagement Rate: ${(avgEngagement * 100).toFixed(2)}%\\n`;\n  text += `- Total Saves: ${totalSaves}\\n`;\n  text += `- Post Types: ${[...new Set(input.data.map(p => p[\"Post Type\"]))].join(', ')}\\n`;\n  text += `- Formats: ${[...new Set(input.data.map(p => p.format))].join(', ')}\\n\\n`;\n  \n  // Top 5 posts by engagement\n  const sortedByEngagement = [...input.data]\n    .sort((a, b) => (b[\"engagements rate\"] || 0) - (a[\"engagements rate\"] || 0))\n    .slice(0, 5);\n  \n  text += `### Top 5 Posts by Engagement Rate\\n\\n`;\n  text += `| Post ID | Week | Day | Type | Engagement Rate | Reach | Saves |\\n`;\n  text += `|---------|------|-----|------|-----------------|-------|-------|\\n`;\n  \n  sortedByEngagement.forEach(post => {\n    const engRate = ((post[\"engagements rate\"] || 0) * 100).toFixed(2);\n    text += `| ${post[\"Post ID\"]} | ${post[\"Week Number\"]} | ${post.Day} | ${post[\"Post Type\"]} | ${engRate}% | ${post.Reach} | ${post.Saves} |\\n`;\n  });\n  \n  text += `\\n`;\n  \n  // Week-by-week summary\n  const weeklyData = {};\n  input.data.forEach(post => {\n    const week = post[\"Week Number\"];\n    if (!weeklyData[week]) {\n      weeklyData[week] = {\n        posts: 0,\n        totalReach: 0,\n        totalEngagement: 0,\n        totalSaves: 0\n      };\n    }\n    weeklyData[week].posts++;\n    weeklyData[week].totalReach += post.Reach || 0;\n    weeklyData[week].totalEngagement += post[\"engagements rate\"] || 0;\n    weeklyData[week].totalSaves += post.Saves || 0;\n  });\n  \n  text += `### Weekly Performance Summary\\n\\n`;\n  text += `| Week | Posts | Avg Reach | Avg Engagement | Total Saves |\\n`;\n  text += `|------|-------|-----------|----------------|-------------|\\n`;\n  \n  Object.keys(weeklyData).sort((a, b) => a - b).forEach(week => {\n    const data = weeklyData[week];\n    const avgReach = Math.round(data.totalReach / data.posts);\n    const avgEng = ((data.totalEngagement / data.posts) * 100).toFixed(2);\n    text += `| ${week} | ${data.posts} | ${avgReach} | ${avgEng}% | ${data.totalSaves} |\\n`;\n  });\n  \n  text += `\\n`;\n}\n\ntext += `---\\n\\n`;\ntext += `**End of Campaign Lock Report**\\n`;\ntext += `Generated: ${new Date().toISOString()}`;\n\nreturn {\n  json: {\n    text: text,\n    campaign_id: campaignId,\n    campaign_name: campaignName,\n    lock_id: lockId,\n    post_count: input.data ? input.data.length : 0,\n    character_count: text.length,\n    generated_at: new Date().toISOString()\n  }\n};\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1136,
+        -1920
+      ],
+      "id": "7aa32609-458f-4691-9e21-ee42b51e59e1",
+      "name": "Code in JavaScript2"
+    },
+    {
+      "parameters": {
+        "content": "# Campaign director :  \n## execution",
+        "height": 704,
+        "width": 1920,
+        "color": 3
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -688,
+        -272
+      ],
+      "typeVersion": 1,
+      "id": "94e10a71-4e06-4a92-8677-f4438e6b4e6e",
+      "name": "Sticky Note3"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "f562ee84-c092-49b1-8cb6-4011e5727a7f",
+              "leftValue": "={{ $json['campaign report'][0] }}",
+              "rightValue": "",
+              "operator": {
+                "type": "object",
+                "operation": "exists",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        304,
+        -2192
+      ],
+      "id": "9b61e172-4005-438f-b25b-4a6c5d88b29f",
+      "name": "If"
+    },
+    {
+      "parameters": {
+        "content": "# campaign report",
+        "height": 1104,
+        "width": 3312
+      },
+      "type": "n8n-nodes-base.stickyNote",
+      "position": [
+        -832,
+        -2288
+      ],
+      "typeVersion": 1,
+      "id": "9a9713df-da42-41e4-9785-4d1cc8a7bcff",
+      "name": "Sticky Note2"
+    },
+    {
+      "parameters": {
+        "path": "84fe436e-7515-4e34-9a39-6c31ec671dd0",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -768,
+        -2176
+      ],
+      "id": "c0d7f91f-6a9d-4615-a362-709a04a85da2",
+      "name": "Webhook",
+      "webhookId": "84fe436e-7515-4e34-9a39-6c31ec671dd0"
+    },
+    {
+      "parameters": {
+        "path": "382793d7-b46e-4913-adfe-048ebe24bddf",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -576,
+        -880
+      ],
+      "id": "9bd30c0b-cd11-4f9f-8945-f13425746675",
+      "name": "Webhook1",
+      "webhookId": "382793d7-b46e-4913-adfe-048ebe24bddf"
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "cd4616f2-cbce-4db1-b727-04be34f6b7db",
+              "name": "output",
+              "value": "={{ $json.output }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        112,
+        -128
+      ],
+      "id": "3ca8b830-536f-486c-b667-300922d57136",
+      "name": "Edit Fields3"
+    },
+    {
+      "parameters": {
+        "jsCode": "const output = $input.first().json.output;\nconst jsonStart = output.indexOf('```json\\n') + 8;\nconst jsonEnd = output.indexOf('\\n```', jsonStart);\nconst jsonStr = output.substring(jsonStart, jsonEnd);\nconst parsed = JSON.parse(jsonStr);\n\nreturn [{ json: parsed.campaign_planner_output }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        320,
+        -128
+      ],
+      "id": "3b480c5c-796d-43c6-b9a0-624449407700",
+      "name": "Code in JavaScript"
+    },
+    {
+      "parameters": {
+        "amount": 1,
+        "unit": "minutes"
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2240,
+        -496
+      ],
+      "id": "f5a9ba1e-35ba-416a-b557-ce05051611b7",
+      "name": "Wait",
+      "webhookId": "28cf561d-f43e-447f-a0ca-4fc5bd82b134"
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appKT08lPAlsBobbC",
+          "mode": "list",
+          "cachedResultName": "Campaigns (test)",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblnUODAapT1iq5l0",
+          "mode": "list",
+          "cachedResultName": "Campaigns",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC/tblnUODAapT1iq5l0"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "complete": false,
+            "Campaign ID": "={{ $json.task_2_campaign_record.campaign_id }}",
+            "Campaign Name": "={{ $json.task_2_campaign_record.campaign_name }}",
+            "Status": "Planning",
+            "Start Date": "={{ $json.task_2_campaign_record.start_date }}",
+            "End Date": "={{ $json.task_2_campaign_record.end_date }}",
+            "Posting Frequency": "=",
+            "structure": "={{ $json.task_2_campaign_record.posting_frequency }}",
+            "Success Definition": "={{ $json.task_2_campaign_record.success_kpi.primary }} {{ $json.task_2_campaign_record.success_kpi.supporting_signals }}",
+            "Notes (Internal)": "={{ $json.task_1_constraints.director_notes_key_guidance }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Campaign ID",
+              "displayName": "Campaign ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Campaign Name",
+              "displayName": "Campaign Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Status",
+              "displayName": "Status",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Planning",
+                  "value": "Planning"
+                },
+                {
+                  "name": "Active",
+                  "value": "Active"
+                },
+                {
+                  "name": "Completed",
+                  "value": "Completed"
+                },
+                {
+                  "name": "Archived",
+                  "value": "Archived"
+                },
+                {
+                  "name": "Planned",
+                  "value": "Planned"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Start Date",
+              "displayName": "Start Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "End Date",
+              "displayName": "End Date",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Duration (weeks)",
+              "displayName": "Duration (weeks)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "complete",
+              "displayName": "complete",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "structure",
+              "displayName": "structure",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Posting Frequency",
+              "displayName": "Posting Frequency",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "number",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Core Principle",
+              "displayName": "Core Principle",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Space > Object > Human",
+                  "value": "Space > Object > Human"
+                },
+                {
+                  "name": "Object > Space > Human",
+                  "value": "Object > Space > Human"
+                },
+                {
+                  "name": "Brand Awareness",
+                  "value": "Brand Awareness"
+                },
+                {
+                  "name": "Sales Growth",
+                  "value": "Sales Growth"
+                },
+                {
+                  "name": "Community Engagement",
+                  "value": "Community Engagement"
+                },
+                {
+                  "name": "Customer Loyalty",
+                  "value": "Customer Loyalty"
+                },
+                {
+                  "name": "Sustainability",
+                  "value": "Sustainability"
+                },
+                {
+                  "name": "Innovation",
+                  "value": "Innovation"
+                },
+                {
+                  "name": "Health & Wellness",
+                  "value": "Health & Wellness"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Success Definition",
+              "displayName": "Success Definition",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Notes (Internal)",
+              "displayName": "Notes (Internal)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Campaign Cover",
+              "displayName": "Campaign Cover",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Campaign Locks",
+              "displayName": "Campaign Locks",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Shot Vocabulary 2",
+              "displayName": "Shot Vocabulary 2",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Shoots",
+              "displayName": "Shoots",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Posts",
+              "displayName": "Posts",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Weekly Schedule",
+              "displayName": "Weekly Schedule",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Weekly Metrics",
+              "displayName": "Weekly Metrics",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Surfaces",
+              "displayName": "Surfaces",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Campaign rules",
+              "displayName": "Campaign rules",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "location assets",
+              "displayName": "location assets",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "campaign characters",
+              "displayName": "campaign characters",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "products",
+              "displayName": "products",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "campaign report",
+              "displayName": "campaign report",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        512,
+        96
+      ],
+      "id": "e7e89faa-72c0-4e8c-9955-666789bf89e1",
+      "name": "new campaign",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "appKT08lPAlsBobbC",
+          "mode": "list",
+          "cachedResultName": "Campaigns (test)",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC"
+        },
+        "table": {
+          "__rl": true,
+          "value": "tblcub22WsB6ej68B",
+          "mode": "list",
+          "cachedResultName": "Shot Vocabulary",
+          "cachedResultUrl": "https://airtable.com/appKT08lPAlsBobbC/tblcub22WsB6ej68B"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Frontal Allowed?": false,
+            "Signature Shot?": false
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Shot ID",
+              "displayName": "Shot ID",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Shot Name",
+              "displayName": "Shot Name",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": true
+            },
+            {
+              "id": "Shot Type",
+              "displayName": "Shot Type",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Canonical",
+                  "value": "Canonical"
+                },
+                {
+                  "name": "Motion",
+                  "value": "Motion"
+                },
+                {
+                  "name": "Video",
+                  "value": "Video"
+                },
+                {
+                  "name": "Image + Video",
+                  "value": "Image + Video"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Framing",
+              "displayName": "Framing",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Wide",
+                  "value": "Wide"
+                },
+                {
+                  "name": "Medium",
+                  "value": "Medium"
+                },
+                {
+                  "name": "Medium-Close",
+                  "value": "Medium-Close"
+                },
+                {
+                  "name": "Close",
+                  "value": "Close"
+                },
+                {
+                  "name": "Locked",
+                  "value": "Locked"
+                },
+                {
+                  "name": "Mid",
+                  "value": "Mid"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Camera Height",
+              "displayName": "Camera Height",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Eye-level",
+                  "value": "Eye-level"
+                },
+                {
+                  "name": "Slightly low",
+                  "value": "Slightly low"
+                },
+                {
+                  "name": "Neutral",
+                  "value": "Neutral"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Human Orientation",
+              "displayName": "Human Orientation",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Away",
+                  "value": "Away"
+                },
+                {
+                  "name": "Neutral",
+                  "value": "Neutral"
+                },
+                {
+                  "name": "Frontal",
+                  "value": "Frontal"
+                },
+                {
+                  "name": "None",
+                  "value": "None"
+                },
+                {
+                  "name": "Static",
+                  "value": "Static"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Frontal Allowed?",
+              "displayName": "Frontal Allowed?",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Purpose",
+              "displayName": "Purpose",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Description",
+              "displayName": "Description",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Signature Shot?",
+              "displayName": "Signature Shot?",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "boolean",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Frequency Limit",
+              "displayName": "Frequency Limit",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "options",
+              "options": [
+                {
+                  "name": "Unrestricted",
+                  "value": "Unrestricted"
+                },
+                {
+                  "name": "Max 1 per week",
+                  "value": "Max 1 per week"
+                },
+                {
+                  "name": "Max 1 per campaign",
+                  "value": "Max 1 per campaign"
+                },
+                {
+                  "name": "Low",
+                  "value": "Low"
+                },
+                {
+                  "name": "Very Low",
+                  "value": "Very Low"
+                }
+              ],
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Associated Campaigns",
+              "displayName": "Associated Campaigns",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Notes",
+              "displayName": "Notes",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Image Reference",
+              "displayName": "Image Reference",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Shoots",
+              "displayName": "Shoots",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Assets",
+              "displayName": "Assets",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "location assets",
+              "displayName": "location assets",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Campaigns",
+              "displayName": "Campaigns",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "array",
+              "readOnly": false,
+              "removed": false
+            },
+            {
+              "id": "Campaign ID (from Campaigns)",
+              "displayName": "Campaign ID (from Campaigns)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            },
+            {
+              "id": "Campaign Name (from Campaigns)",
+              "displayName": "Campaign Name (from Campaigns)",
+              "required": false,
+              "defaultMatch": false,
+              "canBeUsedToMatch": true,
+              "display": true,
+              "type": "string",
+              "readOnly": true,
+              "removed": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        864,
+        -128
+      ],
+      "id": "4dfcae95-96a6-4afd-893a-6baba999f00c",
+      "name": "new campaign2",
+      "credentials": {
+        "airtableTokenApi": {
+          "id": "8XystAx16z6NA1gE",
+          "name": "Airtable Personal Access Token account 2"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "task_3_shoot_plan",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        624,
+        -128
+      ],
+      "id": "49beda5b-541e-4aa0-a7c0-937e6271916a",
+      "name": "Split Out"
+    }
+  ],
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Replace Me1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Convert to File": {
+      "main": [
+        [
+          {
+            "node": "Upload file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Upload file": {
+      "main": [
+        [
+          {
+            "node": "Update record",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Update record": {
+      "main": [
+        []
+      ]
+    },
+    "previous reports": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me1": {
+      "main": [
+        [
+          {
+            "node": "previous reports",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Message a model",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "Extract from File": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [
+          {
+            "node": "Replace Me3",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Extract from File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me3": {
+      "main": [
+        [
+          {
+            "node": "Aggregate1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message a model": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Merge": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields1": {
+      "main": [
+        [
+          {
+            "node": "Merge",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Replace Me4": {
+      "main": [
+        [
+          {
+            "node": "Wait",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model2": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "Creator : planner",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "characters": {
+      "ai_tool": [
+        [
+          {
+            "node": "Creator : planner",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "locations": {
+      "ai_tool": [
+        [
+          {
+            "node": "Creator : planner",
+            "type": "ai_tool",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields2": {
+      "main": [
+        [
+          {
+            "node": "Replace Me4",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Creator : planner": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Simple Memory": {
+      "ai_memory": [
+        []
+      ]
+    },
+    "HTTP Request1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript1": {
+      "main": [
+        [
+          {
+            "node": "Edit Fields",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "data analyze1": {
+      "main": [
+        [
+          {
+            "node": "Convert to File",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "campaign": {
+      "main": [
+        [
+          {
+            "node": "If1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "locks1": {
+      "main": [
+        [
+          {
+            "node": "shoots",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 1
+          }
+        ]
+      ]
+    },
+    "shoots": {
+      "main": [
+        [
+          {
+            "node": "posts1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Aggregate",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "posts1": {
+      "main": [
+        [
+          {
+            "node": "weekly metrics",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Aggregate2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "weekly metrics": {
+      "main": [
+        [
+          {
+            "node": "Aggregate3",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If1": {
+      "main": [
+        [
+          {
+            "node": "If",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Merge1": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 2
+          }
+        ]
+      ]
+    },
+    "Aggregate2": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 3
+          }
+        ]
+      ]
+    },
+    "Aggregate3": {
+      "main": [
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 4
+          }
+        ]
+      ]
+    },
+    "Anthropic Chat Model": {
+      "ai_languageModel": [
+        [
+          {
+            "node": "data analyze1",
+            "type": "ai_languageModel",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript2": {
+      "main": [
+        [
+          {
+            "node": "data analyze1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "If": {
+      "main": [
+        [],
+        [
+          {
+            "node": "Merge1",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "locks1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "campaign",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Webhook1": {
+      "main": [
+        [
+          {
+            "node": "Replace Me1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Edit Fields3": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "new campaign",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Split Out",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait": {
+      "main": [
+        [
+          {
+            "node": "Creator : planner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "new campaign": {
+      "main": [
+        []
+      ]
+    },
+    "new campaign2": {
+      "main": [
+        []
+      ]
+    },
+    "Split Out": {
+      "main": [
+        [
+          {
+            "node": "new campaign2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {}
+    ],
+    "Code in JavaScript": [
+      {
+        "task_1_constraints": {
+          "constraints_locked": true,
+          "hard_constraints": [
+            "3-2-1 weekly rhythm (3 canonical + 2 derivative + 1 motion)",
+            "Negative space ≥ 60% all posts",
+            "Signal Red maximum 1-2 posts entire campaign",
+            "No emojis, no questions, no hype language",
+            "Architectural environments only—no domestic or casual settings",
+            "60% minimum negative space in all compositions",
+            "No commercial language or direct selling"
+          ],
+          "director_notes_key_guidance": "Post-holiday professional return focus. Demonstrate discipline and form as confidence builders. Campaign centers on 'shirt as foundation of intentional dressing.' Signal Red deployment Week 4 (single red shirt in brutalist setting). Empty Space statement Week 6 (architecture without human/product). Target KPI: 4.2% engagement rate with professionals returning to structured work routines."
+        },
+        "task_2_campaign_record": {
+          "campaign_id": "RTF-2025-Q1",
+          "campaign_name": "Return to Form",
+          "start_date": "2025-01-06",
+          "end_date": "2025-03-02",
+          "duration_weeks": 8,
+          "total_posts": 48,
+          "posting_frequency": "6 posts/week (Mon, Tue, Thu, Fri, Sat, Sun)",
+          "campaign_goal": "brand_depth",
+          "success_kpi": {
+            "primary": "Engagement rate ≥ 4.2%",
+            "supporting_signals": [
+              "Save rate: 8.5% (professionals curating spring wardrobe inspiration)",
+              "Profile visits: 15% increase (brand discovery for elevated workwear)",
+              "Time spent viewing: 12+ seconds average (deep engagement with architectural compositions)"
+            ]
+          },
+          "campaign_concept": "As professionals return to structured routines post-holidays, we demonstrate how discipline and form create confidence. The shirt becomes the foundation of intentional dressing—not fashion, but architecture for the body.",
+          "emotional_tone": [
+            "disciplined",
+            "confident",
+            "refined",
+            "grounded"
+          ],
+          "tone_rationale": "Post-holiday period requires demonstrating brand sophistication and supporting professionals' return to structured routines. Tone emphasizes foundational confidence through architectural restraint.",
+          "risk_level": "balanced",
+          "risk_rationale": "Balanced approach maintains brand identity (architectural restraint, anti-commercial aesthetic) while ensuring accessibility for professionals seeking workwear guidance. Signal Red moment adds calculated visual tension without compromising core philosophy.",
+          "non_negotiables": [
+            "60% minimum negative space in all compositions—space dominates subject",
+            "Architectural environments only—no domestic or casual settings",
+            "No commercial language or direct selling—brand philosophy through visual demonstration"
+          ],
+          "signature_moments": [
+            {
+              "timing": "Week 4, mid-campaign momentum",
+              "description": "Signal Red Discipline: One carefully placed Signal Red shirt in stark brutalist environment",
+              "purpose": "Represents the power of intentional choice—rare color deployment creates visual tension while demonstrating confidence through restraint"
+            },
+            {
+              "timing": "Week 6, building toward campaign conclusion",
+              "description": "Empty Space Statement: One post featuring only architectural space with no human presence",
+              "purpose": "The shirt's absence emphasizing its importance to structure—reinforces 'architecture > product' philosophy"
+            }
+          ],
+          "director_notes": "Post-holiday professional audience. Demonstrate discipline and form as confidence builders. Target engagement rate 4.2% with professionals returning to structured routines. Signal Red Week 4 (brutalist setting). Empty Space statement Week 6.",
+          "status": "planning"
+        },
+        "task_3_shoot_plan": {
+          "shoots": [
+            {
+              "shoot_id": "SHOOT-01",
+              "shoot_name": "Brutalist Foundation",
+              "weeks_covered": [
+                1,
+                2,
+                3
+              ],
+              "post_count": 18,
+              "production_type": "photography",
+              "locations": [
+                "rec3yKApASp5PlaYx",
+                "rectXDy6IwlO6n8jM"
+              ],
+              "characters": [
+                "rectXDy6IwlO6n8jM"
+              ],
+              "narrative_phase": "Opening: Establish architectural restraint and discipline. Foundation-building through geometric environments and structured compositions. Sets campaign tone.",
+              "deliverables": "18 static images (12 canonical posts, 4 derivative posts, 2 empty space)",
+              "shot_templates_used": [
+                "SHOT-A",
+                "SHOT-B",
+                "SHOT-D"
+              ]
+            },
+            {
+              "shoot_id": "SHOOT-02",
+              "shoot_name": "Red Discipline Signal",
+              "weeks_covered": [
+                4
+              ],
+              "post_count": 6,
+              "production_type": "photography",
+              "locations": [
+                "rec3yKApASp5PlaYx"
+              ],
+              "characters": [
+                "rectXDy6IwlO6n8jM"
+              ],
+              "narrative_phase": "Mid-campaign signature moment: Signal Red deployment. Single red shirt in stark brutalist environment demonstrates intentional choice and visual tension.",
+              "deliverables": "6 static images (3 canonical with red shirt, 2 derivative angles, 1 empty space transition)",
+              "shot_templates_used": [
+                "SHOT-B",
+                "SHOT-C",
+                "SHOT-F"
+              ]
+            },
+            {
+              "shoot_id": "SHOOT-03",
+              "shoot_name": "Refined Structure Motion",
+              "weeks_covered": [
+                5,
+                6
+              ],
+              "post_count": 12,
+              "production_type": "mixed (photography + motion)",
+              "locations": [
+                "recarE5QBeQdQbvo8",
+                "rectXDy6IwlO6n8jM"
+              ],
+              "characters": [
+                "rectXDy6IwlO6n8jM"
+              ],
+              "narrative_phase": "Refinement: Motion introduces environmental reveals. Week 6 delivers Empty Space Statement (architecture without human). Builds toward campaign resolution.",
+              "deliverables": "10 static images + 2 motion pieces (Week 6: Empty Space + motion reveal)",
+              "shot_templates_used": [
+                "SHOT-A",
+                "SHOT-B",
+                "SHOT-D",
+                "SHOT-E"
+              ]
+            },
+            {
+              "shoot_id": "SHOOT-04",
+              "shoot_name": "Grounded Conclusion",
+              "weeks_covered": [
+                7,
+                8
+              ],
+              "post_count": 12,
+              "production_type": "mixed (photography + motion)",
+              "locations": [
+                "recarE5QBeQdQbvo8",
+                "rec3yKApASp5PlaYx"
+              ],
+              "characters": [
+                "rectXDy6IwlO6n8jM"
+              ],
+              "narrative_phase": "Conclusion: Return to foundational confidence. Classical-brutalist fusion environments reinforce 'discipline creates confidence.' Campaign closes with grounded authority.",
+              "deliverables": "10 static images + 2 motion pieces",
+              "shot_templates_used": [
+                "SHOT-A",
+                "SHOT-B",
+                "SHOT-C",
+                "SHOT-E"
+              ]
+            }
+          ],
+          "shoot_plan_strategy": {
+            "total_shoots": 4,
+            "total_posts": 48,
+            "static_posts": 42,
+            "motion_posts": 6,
+            "production_rationale": "Four shoots align with narrative arc: Foundation (Weeks 1-3), Signal Moment (Week 4), Refinement (Weeks 5-6), Conclusion (Weeks 7-8). Motion posts distributed conservatively (6 total) per Director guidance on balanced risk. Signal Red isolated to single dedicated shoot for production efficiency and narrative focus."
+          }
+        },
+        "task_4_locations": {
+          "locations": [
+            {
+              "location_id": "rec3yKApASp5PlaYx",
+              "location_name": "Prismatic Figure Environment (Brutalist/Industrial)",
+              "dominance_weeks": [
+                1,
+                2,
+                4
+              ],
+              "usage_frequency": "high (20 posts)",
+              "usage_percentage": "42%",
+              "selection_rationale": "PRIMARY LOCATION. Brutalist/geometric environment best matches 'discipline and form' campaign concept. Raw concrete and geometric structures provide architectural restraint for foundation-building narrative (Weeks 1-3) and Signal Red deployment (Week 4). High negative space potential."
+            },
+            {
+              "location_id": "rectXDy6IwlO6n8jM",
+              "location_name": "Aether Environment (Minimal Architectural)",
+              "dominance_weeks": [
+                3,
+                5
+              ],
+              "usage_frequency": "medium (14 posts)",
+              "usage_percentage": "29%",
+              "selection_rationale": "SECONDARY LOCATION. Minimal architectural space provides compositional contrast to brutalist intensity. Clean lines and natural light support 'refined' emotional tone. Ideal for motion reveals (SHOT-E) and detail crops."
+            },
+            {
+              "location_id": "recarE5QBeQdQbvo8",
+              "location_name": "Golden Monarch Environment (Classical-Brutalist Fusion)",
+              "dominance_weeks": [
+                6,
+                7,
+                8
+              ],
+              "usage_frequency": "medium (12 posts)",
+              "usage_percentage": "25%",
+              "selection_rationale": "TERTIARY LOCATION. Classical-brutalist fusion environment adds visual sophistication for campaign's concluding weeks. Metal/chrome textures with architectural geometry support 'grounded confidence' narrative resolution."
+            },
+            {
+              "location_id": "recndixCl3YQjePhW",
+              "location_name": "Floral Shadow Environment (Textured Minimal)",
+              "dominance_weeks": [
+                6
+              ],
+              "usage_frequency": "low (2 posts)",
+              "usage_percentage": "4%",
+              "selection_rationale": "ACCENT LOCATION. Used exclusively for Week 6 Empty Space Statement. Minimal environment with subtle texture provides architectural purity for philosophy moment (no human, no product)."
+            }
+          ],
+          "location_strategy": {
+            "total_locations": 4,
+            "all_from_airtable": true,
+            "concept_match_quality": "strong",
+            "rationale": "Selected 4 locations covering brutalist (Prismatic/42%), minimal (Aether/29%), classical-fusion (Golden Monarch/25%), and textured minimal (Floral Shadow/4%). Distribution prioritizes brutalist geometry for foundation narrative (Weeks 1-4) then transitions to refined/classical environments for conclusion (Weeks 6-8). Mix provides architectural variety while maintaining campaign's 'discipline and form' concept.",
+            "missing_elements": "None. Campaign needs fully met by existing location library. Brutalist environments provide required geometric restraint. Minimal and classical-fusion locations support emotional tone transitions across 8-week arc."
+          }
+        },
+        "task_5_characters": {
+          "characters": [
+            {
+              "character_id": "rectXDy6IwlO6n8jM",
+              "character_name": "Aether",
+              "usage_role": "primary",
+              "frequency_posts": "33 posts",
+              "frequency_percentage": "69%",
+              "dominance_weeks": [
+                1,
+                2,
+                3,
+                4,
+                5,
+                7,
+                8
+              ]
+            }
+          ],
+          "character_strategy": {
+            "primary_character": "Aether (33 posts, 69%)",
+            "secondary_character": "None",
+            "empty_space_posts": "15 posts (31%)",
+            "rationale": "Single character strategy emphasizes consistency and architectural focus. Aether's 'relaxed yet confident posture' and 'lean physique' align with 'disciplined, confident, refined, grounded' emotional tone. Character provides consistent human element for canonical posts across all weeks while allowing substantial empty space allocation (31%) to reinforce 'architecture > product' philosophy. High empty space percentage supports Director Brief non-negotiable: 'No commercial language—brand philosophy through visual demonstration.' Week 6 Empty Space Statement draws from this 31% allocation."
+          }
+        },
+        "task_6_shot_templates": {
+          "shot_templates": [
+            {
+              "template_id": "SHOT-A",
+              "template_name": "Wide Architectural Authority",
+              "framing": "Wide shot, subject centered or off-center, vast environment dominates",
+              "product_visibility": "<15% of frame",
+              "negative_space": "80-85%",
+              "character_placement": "Centered or positioned 1/3 from edge, distant, small in frame",
+              "composition_rule": "Symmetrical or rule-of-thirds, environment as primary subject",
+              "lighting": "Natural/architectural, soft shadows or harsh directional light from structural elements",
+              "use_cases": [
+                "Campaign opening",
+                "Week transitions",
+                "Signature moments",
+                "Establishing discipline narrative"
+              ],
+              "frequency": "High (14 uses across campaign)",
+              "example_description": "Human figure tiny and centered against massive brutalist stairwell. Concrete geometry dominates 85% of frame. Figure provides scale reference only."
+            },
+            {
+              "template_id": "SHOT-B",
+              "template_name": "Mid-Frame Structured Presence",
+              "framing": "Medium shot, subject centered, balanced architectural composition",
+              "product_visibility": "20-25% of frame",
+              "negative_space": "70-75%",
+              "character_placement": "Centered, mid-distance, clear shirt visibility while environment remains dominant",
+              "composition_rule": "Symmetrical balance, shirt as structural element within architectural frame",
+              "lighting": "Even architectural lighting, minimal shadows, clarity for product",
+              "use_cases": [
+                "Canonical posts",
+                "Product-focused narrative",
+                "Foundation-building weeks"
+              ],
+              "frequency": "High (18 uses across campaign)",
+              "example_description": "Mid-frame portrait, white shirt occupies 22% of frame. Subject centered against concrete wall. Shirt acts as geometric element within architectural composition."
+            },
+            {
+              "template_id": "SHOT-C",
+              "template_name": "Geometric Detail Study",
+              "framing": "Close crop focusing on texture/material intersection with architecture",
+              "product_visibility": "40-50% of frame (tightly cropped collar/shoulder detail)",
+              "negative_space": "50-60%",
+              "character_placement": "Partial visibility (torso/shoulder/collar only)",
+              "composition_rule": "Geometric framing, lines and edges dominate, material texture contrast (fabric vs. concrete)",
+              "lighting": "Directional lighting creating texture definition and shadow geometry",
+              "use_cases": [
+                "Derivative posts",
+                "Texture exploration",
+                "Material refinement narrative"
+              ],
+              "frequency": "Medium (10 uses across campaign)",
+              "example_description": "Close crop of white shirt collar meeting concrete corner. Fabric texture contrasts with raw concrete. Geometric composition with 55% negative space."
+            },
+            {
+              "template_id": "SHOT-D",
+              "template_name": "Empty Space Philosophy",
+              "framing": "Wide or mid, NO product visible, NO character present",
+              "product_visibility": "0%",
+              "negative_space": "95-100%",
+              "character_placement": "None—empty architectural space",
+              "composition_rule": "Pure architecture, negative space as subject, geometric discipline",
+              "lighting": "Natural, dramatic shadows optional, emphasizes spatial depth",
+              "use_cases": [
+                "Campaign opener",
+                "Week 6 Empty Space Statement",
+                "Narrative pauses between weeks"
+              ],
+              "frequency": "Low (4 uses across campaign)",
+              "example_description": "Empty brutalist stairwell. No human. No product. Pure geometry and negative space. Architecture demonstrates brand philosophy without commercial presence."
+            },
+            {
+              "template_id": "SHOT-E",
+              "template_name": "Motion Environmental Reveal",
+              "framing": "Wide to mid, slow camera movement reveals spatial depth",
+              "product_visibility": "15-25% of frame",
+              "negative_space": "70-80%",
+              "character_placement": "Static figure, camera moves through space toward or around subject",
+              "composition_rule": "Environment revealed through motion, spatial depth unfolds over time",
+              "lighting": "Natural, consistent throughout motion, no dramatic lighting shifts",
+              "use_cases": [
+                "Motion posts ONLY",
+                "Week transitions",
+                "Spatial narrative reveals"
+              ],
+              "frequency": "Low (6 uses total—1 per motion post allowance)",
+              "example_description": "Camera slowly tracks through minimal gallery space toward distant figure in white shirt. Motion reveals architectural depth while subject remains still and composed."
+            },
+            {
+              "template_id": "SHOT-F",
+              "template_name": "Signal Red Tension Moment",
+              "framing": "Mid-frame, Signal Red shirt as focal tension point",
+              "product_visibility": "25-30% of frame",
+              "negative_space": "65-70%",
+              "character_placement": "Centered or positioned for maximum red/concrete contrast",
+              "composition_rule": "Red accent creates visual tension against neutral brutalist environment",
+              "lighting": "High contrast, directional light to make red saturate and pop",
+              "use_cases": [
+                "Signal Red deployment ONLY—Week 4 signature moment (1 post max + 1-2 derivatives)"
+              ],
+              "frequency": "Extremely low (3 uses total: 1 canonical + 2 derivative angles)",
+              "example_description": "Single Signal Red shirt (#C1272D) against stark concrete brutalist background. Red creates intentional visual tension. Subject centered. Red shirt occupies 28% of frame."
+            }
+          ],
+          "shot_template_strategy": {
+            "total_templates": 6,
+            "high_frequency_templates": [
+              "SHOT-B (18 uses)",
+              "SHOT-A (14 uses)"
+            ],
+            "medium_frequency_templates": [
+              "SHOT-C (10 uses)"
+            ],
+            "low_frequency_templates": [
+              "SHOT-D (4 uses)",
+              "SHOT-E (6 uses)"
+            ],
+            "signature_templates": [
+              "SHOT-F (3 uses)"
+            ],
+            "distribution_rationale": "Template distribution prioritizes SHOT-B (18 uses) for consistent product-focused canonical posts and SHOT-A (14 uses) for establishing architectural authority. SHOT-C (10 uses) provides derivative variety through geometric detail. SHOT-D (4 uses) reinforces anti-commercial philosophy through empty space. SHOT-E (6 uses) limited to exactly 6 motion posts as per Director guidance. SHOT-F (3 uses) isolated to Week 4 Signal Red moment (1 canonical + 2 derivatives). Total: 49 template applications across 48 posts (some posts may blend templates)."
+          }
+        }
+      }
+    ]
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "3baf9ac7f7fd96a2cc8579c410188e0277971f2bf0a3483f6987c3625db6d9af"
+  }
+}
